@@ -1,0 +1,51 @@
+﻿<Page x:Class="RentalAvenue.Rent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RentalAvenue"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="500"
+      Title="Rent" Width="500" Height="500">
+    <Grid x:Name="MainRent" Background="White">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Type of Property:" FontWeight="Bold" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Margin="0,7,0,0"/>
+            <StackPanel Orientation="Vertical" Margin="10,19,10,1">
+                <TextBlock Text="Type of Property:" FontWeight="Bold" />
+                <ComboBox Name="PropertyTypeComboBox" Width="150">
+                    <ComboBoxItem Content="Apartment" />
+                    <ComboBoxItem Content="House" />
+                    <ComboBoxItem Content="Condo" />
+                    <ComboBoxItem Content="Townhouse" />
+                </ComboBox>
+
+                <TextBlock Text="Address:" FontWeight="Bold" Margin="0,10,0,0" />
+                <TextBox Name="AddressTextBox" Width="300" Margin="0,5,0,0" />
+
+                <TextBlock Text="Price per Month ($):" FontWeight="Bold" Margin="0,10,0,0" />
+                <TextBox Name="PriceTextBox" Width="150" Margin="0,5,0,0" />
+
+                <TextBlock Text="Number of Rooms:" FontWeight="Bold" Margin="0,10,0,0" />
+                <ComboBox Name="RoomsComboBox" Width="150">
+                    <ComboBoxItem Content="1" />
+                    <ComboBoxItem Content="2" />
+                    <ComboBoxItem Content="3" />
+                    <ComboBoxItem Content="4+" />
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Margin="10">
+                <TextBlock Text="Description:" FontWeight="Bold" Margin="0,10,0,0" />
+                <TextBox Name="DescriptionTextBox" TextWrapping="Wrap" AcceptsReturn="True" Height="200" />
+
+                <!--<Button Content="Submit" Width="100" Margin="0,10,0,0" Click="OnSubmit" />-->
+            </StackPanel>
+        
+
+    </Grid>
+    </Grid>
+</Page>
