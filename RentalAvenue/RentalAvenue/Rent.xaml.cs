@@ -18,15 +18,11 @@ namespace RentalAvenue
     /// <summary>
     /// Логика взаимодействия для Rent.xaml
     /// </summary>
-    public partial class Rent : Page
+    public partial class Rent : Window
     {
         public Rent()
         {
             InitializeComponent();
-            this.Width = 500;
-            this.Height = 500;
-            this.HorizontalAlignment = HorizontalAlignment.Stretch;
-            this.VerticalAlignment = VerticalAlignment.Stretch;
 
         }
         private void OnSubmit(object sender, RoutedEventArgs e)

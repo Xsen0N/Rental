@@ -34,9 +34,17 @@ namespace RentalAvenue
         private void OnNavigateToRentalForm(object sender, RoutedEventArgs e)
         {
             Rent rentalForm = new Rent();
-            Window rentalWindow = new Window();
-            rentalWindow.Content = rentalForm;
-            rentalWindow.Show();
+
+            rentalForm.Show();
+        }
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            Regist registrationForm = new Regist();
+            registrationForm.Show();
+        }
+        private void MenuToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            popupMenu.IsOpen = !popupMenu.IsOpen;
         }
     }
 }

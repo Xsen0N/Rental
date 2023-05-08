@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\rental\Rental\RentalAvenue\RentalAvenue\App.xaml
-2779636066
+71473448153
 
-5660844799
+82035879453
 194-1103864946
-MainWindow.xaml;Rent.xaml;
+MainWindow.xaml;Regist.xaml;Rent.xaml;Resources\darkTheme.xaml;Resources\langEN.xaml;Resources\langRU.xaml;Resources\lightTheme.xaml;
 
 False
 
