@@ -20,6 +20,8 @@ namespace RentalAvenue
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ResourceDictionary enDict = new ResourceDictionary() { Source = new Uri("Resources/langEN.xaml", UriKind.Relative) };
+        private readonly ResourceDictionary ruDict = new ResourceDictionary() { Source = new Uri("Resources/langRU.xaml", UriKind.Relative) };
         public MainWindow()
         {
             InitializeComponent();
@@ -46,5 +48,18 @@ namespace RentalAvenue
         {
             popupMenu.IsOpen = !popupMenu.IsOpen;
         }
+        #region Функции смены языка
+
+        private void Ru_Selected(object sender, RoutedEventArgs e) // смена языка на русский путем добавления-удаления словарей
+        {
+            Resources.MergedDictionaries.Remove(enDict);
+            Resources.MergedDictionaries.Add(ruDict);
+        }
+        private void Eng_Selected(object sender, RoutedEventArgs e) // смена языка на английский путем добавления-удаления словарей
+        {
+            Resources.MergedDictionaries.Remove(ruDict);
+            Resources.MergedDictionaries.Add(enDict);
+        }
+        #endregion
     }
 }

@@ -3,11 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:v="clr-namespace:System;assembly=mscorlib">
 
-    <v:String x:Key="shopTitle">Домашний</v:String>
-    <v:String x:Key="Tab1">Список домов</v:String>
-    <v:String x:Key="Tab2">Таблица домов</v:String>
-    <v:String x:Key="Tab3">Настройки</v:String>
-
+    <v:String x:Key="shopTitle">RentalAvenue</v:String>
+    <v:String x:Key="Tab1">Недвижимость</v:String>
     <v:String x:Key="AddItemButton">Добавить</v:String> 
     <v:String x:Key="DeleteItemButton">Удалить по ID</v:String>
     <v:String x:Key="AddImageButton">Загрузить изображение</v:String>
@@ -15,8 +12,9 @@
 	<v:String x:Key="SeachLabel">Поиск:</v:String>
 
     <v:String x:Key="Id">№</v:String>
-    <v:String x:Key="CityLabel">Город</v:String>
+    <v:String x:Key="PropertyLabel">Тип</v:String>
     <v:String x:Key="PriceLabel">Цена</v:String>
+    <v:String x:Key="AddresLabel">Адрес</v:String>
     <v:String x:Key="BedsLabel">Кол-во спален</v:String>
     <v:String x:Key="MetrLabel">Метраж</v:String>
     <v:String x:Key="ImagePathLabel">Путь к изображению</v:String>
@@ -29,7 +27,17 @@
     <v:String x:Key="LangRu">Русский</v:String>
     <v:String x:Key="LangEn">Английский</v:String>
 
-    <v:String x:Key="SelectStyleLabel">Тема:</v:String>
-    <v:String x:Key="StyleLight">Светлая тема</v:String>
-    <v:String x:Key="StyleDark">Сочная тема</v:String>
+    <v:String x:Key="Regist">Вход/регистрация</v:String>
+    <v:String x:Key="Login">Логин</v:String>
+    <v:String x:Key="Submit">Подтвердить</v:String>
+
+    <v:String x:Key="RentLabel">Сдать жилье</v:String>
+    <v:String x:Key="TypeLabel">Выберите тип жилья</v:String>
+    <v:String x:Key="Price">Цена за 1 день($)</v:String>
+    <v:String x:Key="Img">Загрузить изображение</v:String>
+
+    <v:String x:Key="UserAccount">Личный кабинет</v:String>
+    <v:String x:Key="RentHouse">Опубликовать предложение</v:String>
+    <v:String x:Key="Exit">Опубликовать предложение</v:String>
+
 </ResourceDictionary>

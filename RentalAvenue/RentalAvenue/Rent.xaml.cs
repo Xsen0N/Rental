@@ -30,7 +30,7 @@ namespace RentalAvenue
             // Создаем новый объект жилья и заполняем его данными из формы
             RentalProperty property = new RentalProperty();
             property.PropertyType = PropertyTypeComboBox.Text;
-            property.Address = AddressTextBox.Text;
+            property.Addres = AddressTextBox.Text;
             property.Price = Convert.ToDouble(PriceTextBox.Text);
             property.Rooms = Convert.ToInt32(RoomsComboBox.Text);
             property.Description = DescriptionTextBox.Text;

@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid x:Name="MainShopGrid">
-        
+
         <Grid.RowDefinitions>
-            
+
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -25,36 +25,46 @@
                 <RowDefinition Height="25*"></RowDefinition>
                 <RowDefinition Height="192*"></RowDefinition>
             </Grid.RowDefinitions>
-            
+
             <Image Source="img/logo.png"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="60" Width="70" Margin="10, 0, 0, 0"/>
 
-            <Button Content="Начать поиск" Margin="125,10,333,10" HorizontalAlignment="Left" FontSize="11" Grid.ColumnSpan="2" Width="180" Height="30"/>
-
-            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="331,8,10,8" HorizontalAlignment="Right">
+            <Button Content="Поиск" Grid.Column="1" Margin="112,15,0,15" HorizontalAlignment="Left" FontSize="11" Width="95" Height="30"/>
+            <TextBox x:Name="searchField" Grid.Column="2" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="177" Height="22"   TextAlignment="Left"  Margin="38,0,0,0"  />
+            <!--TextChanged="searchField_TextChanged"-->
+            <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="331,8,10,8" HorizontalAlignment="Right" >
                 <Button Click="OnNavigateToRentalForm" Content="Сдать жилье"  FontSize="11" Height="30" Width="90"   />
                 <Button Content="Регистрация" Margin="5, 0, 0, 0" FontSize="11" Width="90" Height="30" Click="RegisterButton_Click" />
             </StackPanel>
-            
-             <Button x:Name="MenuToggleButton" Content="&#x2630;" FontSize="20" Background="Transparent"
-              BorderBrush="Transparent" Grid.Column="10" Margin="6,12,9,6"
-              Grid.ColumnSpan="2" Click="MenuToggleButton_Click"/>   
-           
-        </Grid>
- <Popup x:Name="popupMenu" PlacementTarget="{Binding ElementName=MenuToggleButton}" 
-       Placement="Bottom" StaysOpen="False">
+
+            <Button x:Name="MenuToggleButton" Content="&#x2630;" FontSize="20" Background="Transparent"
+              BorderBrush="Transparent" Grid.Column="3" Margin="6,8,9,10" Click="MenuToggleButton_Click"/>
+            <Popup x:Name="popupMenu" PlacementTarget="{Binding ElementName=MenuToggleButton}" 
+                  Placement="Bottom" StaysOpen="False">
                 <Border Background="White" BorderThickness="0" BorderBrush="Beige">
                     <StackPanel Background="White" Margin="5" >
-                <Button Click="MenuToggleButton_Click" Content="Личный кабинет"/>
-                <Button Click="MenuToggleButton_Click" Content="Опубликовать предложение"/>
-                <Button Click="MenuToggleButton_Click" Content="Оставить отзыв"/>
-                <Button Click="MenuToggleButton_Click" Content="Политика компании"/>
-                <Button Click="MenuToggleButton_Click" Content="Выход из аккаунта"/>
-                     </StackPanel>
+                        <Button Click="MenuToggleButton_Click" Content="Личный кабинет"/>
+                        <Button Click="MenuToggleButton_Click" Content="Опубликовать предложение"/>
+                        <Button Click="MenuToggleButton_Click" Content="Оставить отзыв"/>
+                        <Button Click="MenuToggleButton_Click" Content="Выход из аккаунта"/>
+                        <ComboBox x:Name="availableLanguagesList" Text="Язык">
+                            <ComboBoxItem
+                            x:Name="Ru"
+                            Content="Русский"
+                            Selected="Ru_Selected"/>
+                            <ComboBoxItem
+                            x:Name="Eng"
+                            Selected="Eng_Selected"
+                            Content="English"/>
+                            
+                        </ComboBox>
+                    </StackPanel>
                 </Border>
             </Popup>
 
-        
-        <Grid  x:Name="Filterd" Grid.Row="1" >
+        </Grid>
+
+
+        <Grid  x:Name="Filters" Grid.Row="1" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="731*" />
                 <ColumnDefinition Width="69*" />

@@ -23,7 +23,5 @@ D:\rental\Rental\RentalAvenue\RentalAvenue\obj\Debug\net6.0-windows\RentalAvenue
 D:\rental\Rental\RentalAvenue\RentalAvenue\obj\Debug\net6.0-windows\ref\RentalAvenue.dll
 D:\rental\Rental\RentalAvenue\RentalAvenue\obj\Debug\net6.0-windows\Regist.g.cs
 D:\rental\Rental\RentalAvenue\RentalAvenue\obj\Debug\net6.0-windows\Regist.baml
-D:\rental\Rental\RentalAvenue\RentalAvenue\obj\Debug\net6.0-windows\Resources\darkTheme.baml
-D:\rental\Rental\RentalAvenue\RentalAvenue\obj\Debug\net6.0-windows\Resources\langEN.baml
-D:\rental\Rental\RentalAvenue\RentalAvenue\obj\Debug\net6.0-windows\Resources\langRU.baml
-D:\rental\Rental\RentalAvenue\RentalAvenue\obj\Debug\net6.0-windows\Resources\lightTheme.baml
+D:\rental\Rental\RentalAvenue\RentalAvenue\obj\Debug\net6.0-windows\Admin.g.cs
+D:\rental\Rental\RentalAvenue\RentalAvenue\obj\Debug\net6.0-windows\Admin.baml

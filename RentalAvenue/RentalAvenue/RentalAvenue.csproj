@@ -12,7 +12,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Resources\darkTheme.xaml" />
+    <Page Remove="Resources\langEN.xaml" />
+    <Page Remove="Resources\langRU.xaml" />
+    <Page Remove="Resources\lightTheme.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="img\logo.png" />
+    <Resource Include="Resources\darkTheme.xaml" />
+    <Resource Include="Resources\langEN.xaml" />
+    <Resource Include="Resources\langRU.xaml" />
+    <Resource Include="Resources\lightTheme.xaml" />
   </ItemGroup>
 
 </Project>
