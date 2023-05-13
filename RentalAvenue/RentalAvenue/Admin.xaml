@@ -28,16 +28,15 @@
 
             <Image Source="img/logo.png"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="60" Width="70" Margin="10, 0, 0, 0"/>
 
-            <Label Content="Начать поиск" Grid.Column="1" Margin="125,15,0,15" HorizontalAlignment="Left" FontSize="11" Width="112" Height="30"/>
+            <Label Content="{DynamicResource SeachLabel}" Grid.Column="1" Margin="190,16,0,18" HorizontalAlignment="Left" FontSize="11" Width="47"/>
             <TextBox x:Name="searchField" Grid.Column="2" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="177" Height="22"   TextAlignment="Left"  Margin="38,0,0,0"  />
             <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="331,8,10,8" HorizontalAlignment="Right" >
-                <Button Click="OnNavigateToRentalForm" Content="Сдать жилье"  FontSize="11" Height="30" Width="90"   />
-                <Button Content="Регистрация" Margin="5, 0, 0, 0" FontSize="11" Width="90" Height="30" Click="RegisterButton_Click" />
+                <Button Click="OnNavigateToRentalForm" Content="{DynamicResource RentLabel}"  FontSize="11" Height="21" Width="90"   />
+                <Button Content="{DynamicResource Register}"  Margin="5, 0, 0, 0" FontSize="11" Width="90" Height="20" Click="RegisterButton_Click" />
             </StackPanel>
 
             <Button x:Name="MenuToggleButton" Content="&#x2630;" FontSize="20" Background="Transparent"
-              BorderBrush="Transparent" Grid.Column="10" Margin="6,12,9,6"
-              Grid.ColumnSpan="2" Click="MenuToggleButton_Click"/>
+              BorderBrush="Transparent" Grid.Column="4" Margin="6,7,9,11" Click="MenuToggleButton_Click"/>
             <Popup x:Name="popupMenu" PlacementTarget="{Binding ElementName=MenuToggleButton}" 
                   Placement="Bottom" StaysOpen="False">
                 <Border Background="White" BorderThickness="0" BorderBrush="Beige">
@@ -56,8 +55,8 @@
                 <ColumnDefinition Width="731*" />
                 <ColumnDefinition Width="69*" />
             </Grid.ColumnDefinitions>
-            <ListBox BorderBrush="#DEDEDE" BorderThickness="1" Background="#F8F8F8" Grid.Column="0"  >
-                
+            <ListBox  BorderThickness="1" Background="#63AFD0" Grid.Column="0" Grid.ColumnSpan="2"  >
+
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" Margin="10"/>
@@ -74,7 +73,6 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button Content="Фильтры"  FontSize="11" Grid.Column="1" Height="20" Margin="10, 0, 10, 0"/>
         </Grid>
         <TabControl x:Name="tabControl" Grid.Row="2" Grid.RowSpan="2">
             <TabItem Header="{DynamicResource Tab1}" Style="{DynamicResource TabItemStye}" Grid.Row="3">
@@ -150,19 +148,79 @@
                         <Button x:Name="AddImageButton" Command="ApplicationCommands.Paste" Content="{DynamicResource AddImageButton}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource ButtonStyle}" Height="18"/>
                         <Label x:Name="DescLabel" Content="{DynamicResource DescLabel}" VerticalAlignment="Top"/>
                         <TextBox x:Name="newItemDesc" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}"/>
-                        <Button x:Name="AddItemButton" Content="{DynamicResource AddItemButton}" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="0,0,0,19" >
-                        </Button>
-                        <Button x:Name="ClearFormButton" Command="ApplicationCommands.CancelPrint" Content="{DynamicResource ClearFormButton}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" HorizontalAlignment="Right"  Style="{DynamicResource ButtonStyle}"/>
+                        <Button x:Name="AddItemButton" Content="{DynamicResource AddItemButton}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Height="13" Width="45" />
+                        <Button x:Name="ClearFormButton" Command="ApplicationCommands.CancelPrint" Content="{DynamicResource ClearFormButton}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left"  Style="{DynamicResource ButtonStyle}" Height="16" Width="106" Margin="13,0,0,0"/>
                     </UniformGrid>
                     <UniformGrid Style="{DynamicResource UniformGridStyle}" Grid.ColumnSpan="5" Margin="0,252,238,0" Grid.RowSpan="2">
                         <Button x:Name="LoadData" Content="{DynamicResource LoadDataFromFile}" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left"  Style="{DynamicResource ButtonStyle}" Height="24" Margin="45,0,0,-10" Width="91"/>
-                        <Button x:Name="undoButton" Content="Undo"  HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top"  Style="{DynamicResource ButtonStyle}"/>
-                        <Button x:Name="RedoButton"  Content="Redo"  HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{DynamicResource ButtonStyle}" Margin="224,-20,0,0"/>
+                        <Button x:Name="undoButton" Content="Undo"  HorizontalAlignment="Left" Margin="0,0,0,-6" VerticalAlignment="Bottom"  Style="{DynamicResource ButtonStyle}"/>
+                        <Button x:Name="RedoButton"  Content="Redo"  HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{DynamicResource ButtonStyle}" Margin="224,-13,0,0"/>
                         <Button x:Name="SaveData"  Content="{DynamicResource SaveDataToFile}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="198,-17,0,0"  Style="{DynamicResource ButtonStyle}" Height="17" Width="72"/>
                     </UniformGrid>
                     <UniformGrid Grid.Column="4" Style="{DynamicResource UniformGridStyle}" Margin="0,260,0,0" Grid.RowSpan="2">
-                        <Button x:Name="DeleteItemButton" Command="ApplicationCommands.Delete" Content="{DynamicResource DeleteItemButton}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left"/>
-                        <TextBox x:Name="deletedItemIdInput" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}"/>
+                        <Button x:Name="DeleteItemButton" Command="ApplicationCommands.Delete" Content="{DynamicResource DeleteItemButton}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Height="14" Width="75" Margin="0,13,0,0"/>
+                        <TextBox x:Name="deletedItemIdInput" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}" Margin="0,14,0,0"/>
+                    </UniformGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="{DynamicResource Tab2}" Style="{DynamicResource TabItemStye}" Grid.Row="3">
+                <Grid ShowGridLines="True" Grid.RowSpan="3" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="77*" />
+                        <ColumnDefinition Width="245*"/>
+                        <ColumnDefinition Width="240*"/>
+                        <ColumnDefinition Width="232*" />
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.85*" />
+                        <RowDefinition Height="0.15*" />
+                    </Grid.RowDefinitions>
+                    <DataGrid  x:Name="Database1"
+                        ItemsSource="{Binding Source=ItemList}" AutoGenerateColumns="False" IsReadOnly="True"  Grid.ColumnSpan="3" Margin="0,0,6,6">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                x:Name="IDColumnHeaderName1"
+                                Width="*"
+                                Binding="{Binding Id}"
+                                Header="{DynamicResource ID}" MinWidth="3" MaxWidth="30" CellStyle="{DynamicResource DataGridStyle}"/>
+
+                            <DataGridTextColumn
+                                x:Name="LoginColumnHeaderName1"
+                                Width="*"
+                                Binding="{Binding Login}"
+                                Header="{DynamicResource Login}"/>
+                            <DataGridTextColumn
+                                x:Name="EmailColumnHeaderName1"
+                                Width="*"
+                                Binding="{Binding Email}"
+                                Header="{DynamicResource Email}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <UniformGrid 
+                        Grid.Column="3"
+                        Columns="1"
+                        Rows="8"
+                        Style="{DynamicResource UniformGridStyle}" Width="150" Height="250" Margin="41,2,41,22">
+                        <Label x:Name="IDUserLabel" Content="{DynamicResource ID}" VerticalAlignment="Top" Margin="10"/>
+                        <TextBox x:Name="newItemIDUser"   TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}" />
+                        <Label x:Name="LoginLabel" Content="{DynamicResource Login}" VerticalAlignment="Top"/>
+                        <TextBox x:Name="newItemLogin" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}"/>
+                        <Label x:Name="Email" Content="{DynamicResource Email}" VerticalAlignment="Top"/>
+                        <TextBox x:Name="newItemEmail" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch"/>
+                        <Button x:Name="AddItemButton1" Content="{DynamicResource AddItemButton}" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="0,0,0,11" Height="12" Width="46" >
+                        </Button>
+                        <Button x:Name="ClearFormButton1" Command="ApplicationCommands.CancelPrint" Content="{DynamicResource ClearFormButton}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" HorizontalAlignment="Right"  Style="{DynamicResource ButtonStyle}" Height="15" Width="51"/>
+                    </UniformGrid>
+                    <UniformGrid Style="{DynamicResource UniformGridStyle}" Grid.ColumnSpan="3" Margin="0,252,6,0" Grid.RowSpan="2">
+                        <Button x:Name="LoadData2" Content="{DynamicResource LoadDataFromFile}" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left"  Style="{DynamicResource ButtonStyle}" Height="24" Margin="45,0,0,-10" Width="91"/>
+                        <Button x:Name="undoButton2" Content="Undo"  HorizontalAlignment="Left" Margin="0,0,0,-7" VerticalAlignment="Bottom"  Style="{DynamicResource ButtonStyle}"/>
+                        <Button x:Name="RedoButton2"  Content="Redo"  HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{DynamicResource ButtonStyle}" Margin="224,-14,0,0"/>
+                        <Button x:Name="SaveData2"  Content="{DynamicResource SaveDataToFile}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="198,-17,0,0"  Style="{DynamicResource ButtonStyle}" Height="17" Width="72"/>
+                    </UniformGrid>
+                    <UniformGrid Grid.Column="2" Style="{DynamicResource UniformGridStyle}" Margin="240,0,0,0" Grid.ColumnSpan="2" Grid.Row="1">
+                        <Button x:Name="DeleteItemButton2" Command="ApplicationCommands.Delete" Content="{DynamicResource DeleteItemButton}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Height="18" Width="74"/>
+                        <TextBox x:Name="deletedItemIdInput2" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}"/>
                     </UniformGrid>
                 </Grid>
             </TabItem>

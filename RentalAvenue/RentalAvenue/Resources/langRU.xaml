@@ -5,6 +5,7 @@
 
     <v:String x:Key="shopTitle">RentalAvenue</v:String>
     <v:String x:Key="Tab1">Недвижимость</v:String>
+    <v:String x:Key="Tab2">Пользователи</v:String>
     <v:String x:Key="AddItemButton">Добавить</v:String> 
     <v:String x:Key="DeleteItemButton">Удалить по ID</v:String>
     <v:String x:Key="AddImageButton">Загрузить изображение</v:String>
@@ -29,6 +30,7 @@
 
     <v:String x:Key="Regist">Вход/регистрация</v:String>
     <v:String x:Key="Login">Логин</v:String>
+    <v:String x:Key="Email">Email</v:String>
     <v:String x:Key="Submit">Подтвердить</v:String>
 
     <v:String x:Key="RentLabel">Сдать жилье</v:String>
@@ -39,5 +41,6 @@
     <v:String x:Key="UserAccount">Личный кабинет</v:String>
     <v:String x:Key="RentHouse">Опубликовать предложение</v:String>
     <v:String x:Key="Exit">Опубликовать предложение</v:String>
+    <v:String x:Key="Register">Регистрация</v:String>
 
 </ResourceDictionary>

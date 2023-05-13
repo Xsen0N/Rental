@@ -5,9 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:RentalAvenue"
       mc:Ignorable="d"
-      Title="Rent" Width="380" Height="530">
+      Title="Rent" Width="315" Height="530">
     <Grid x:Name="MainRent" Background="White" HorizontalAlignment="Center">
-        <Grid>
+        <Grid Margin="14,0,-14,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />

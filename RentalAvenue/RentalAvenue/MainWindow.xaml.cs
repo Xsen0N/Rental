@@ -26,6 +26,7 @@ namespace RentalAvenue
         {
             InitializeComponent();
             this.SizeToContent = SizeToContent.Manual;
+            Resources.MergedDictionaries.Add(ruDict); // словарь русских слов
 
         }
 
@@ -36,7 +37,6 @@ namespace RentalAvenue
         private void OnNavigateToRentalForm(object sender, RoutedEventArgs e)
         {
             Rent rentalForm = new Rent();
-
             rentalForm.Show();
         }
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
@@ -61,5 +61,15 @@ namespace RentalAvenue
             Resources.MergedDictionaries.Add(enDict);
         }
         #endregion
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+
+        }
+        private void OnNavigateToAdmin(object sender, RoutedEventArgs e)
+        {
+            Rent rentalForm = new Rent();
+            rentalForm.Show();
+        }
     }
 }
