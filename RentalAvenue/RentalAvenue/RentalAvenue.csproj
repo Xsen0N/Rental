@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="img\fon.jpg" />
+    <None Remove="img\font.jpg" />
     <None Remove="img\logo.png" />
   </ItemGroup>
 
@@ -34,9 +36,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="img\fon.jpg" />
+    <Resource Include="img\font.jpg" />
     <Resource Include="img\logo.png" />
     <Resource Include="Resources\darkTheme.xaml" />
     <Resource Include="Resources\langEN.xaml" />
@@ -47,5 +52,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

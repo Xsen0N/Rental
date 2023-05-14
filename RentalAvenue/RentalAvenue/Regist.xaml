@@ -6,6 +6,12 @@
         xmlns:local="clr-namespace:RentalAvenue"
         mc:Ignorable="d"
         Title="Regist" Height="256" Width="300">
+    <Window.Background>
+        <ImageBrush ImageSource="img\font.jpg" Viewbox="0,0,0.5,1" Opacity="0.8"   />
+    </Window.Background>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:CustomCommands.LogIntoProgram}" Executed="LogIn"/>
+    </Window.CommandBindings>
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Template">
@@ -29,16 +35,16 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Content="Регистрация/вход" HorizontalAlignment="Center" Margin="10" FontSize="15"/>
+            <Label Content="{DynamicResource Regist}" HorizontalAlignment="Center" Margin="10" FontSize="15" Foreground="White"/>
             <StackPanel Grid.Row="1" Orientation="Vertical"  HorizontalAlignment="Center">
-                <TextBlock Text="Логин:" VerticalAlignment="Center" Margin="5" />
-                <TextBox x:Name="LogTextBox"  Width="200" Height="21"/>
+                <TextBlock Text="{DynamicResource Login}" VerticalAlignment="Center" Margin="5" Foreground="White" />
+                <TextBox x:Name="LogTextBox"  Width="200" Height="21" Foreground="White" BorderBrush="White"/>
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10" HorizontalAlignment="Center">
-                <TextBlock Text="Email:" VerticalAlignment="Center" Margin="5" />
-                <TextBox x:Name="EmailTextBox"  Width="200" Height="22"/>
+                <TextBlock Text="{DynamicResource Email}" VerticalAlignment="Center" Margin="5" Foreground="White" />
+                <TextBox x:Name="EmailTextBox"  Width="200" Height="22" Foreground="White" BorderBrush="White"/>
             </StackPanel>
-            <Button Grid.Row="3" Content="Submit" Width="90"  Height="25" Background="LightPink">
+            <Button Grid.Row="3" Content="{DynamicResource Submit}" x:Name="Submit" Width="90"  Height="25" Background="#7B68EE" Foreground="White" Command="local:CustomCommands.LogIntoProgram"  >
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>

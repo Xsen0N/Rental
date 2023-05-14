@@ -37,10 +37,15 @@
     <v:String x:Key="TypeLabel">Выберите тип жилья</v:String>
     <v:String x:Key="Price">Цена за 1 день($)</v:String>
     <v:String x:Key="Img">Загрузить изображение</v:String>
+    <v:String x:Key="Metr">Метраж</v:String>
 
     <v:String x:Key="UserAccount">Личный кабинет</v:String>
     <v:String x:Key="RentHouse">Опубликовать предложение</v:String>
     <v:String x:Key="Exit">Опубликовать предложение</v:String>
     <v:String x:Key="Register">Регистрация</v:String>
+
+    <v:String x:Key="Write">Написать владельцу</v:String>
+    <v:String x:Key="Name">Имя</v:String>
+    
 
 </ResourceDictionary>

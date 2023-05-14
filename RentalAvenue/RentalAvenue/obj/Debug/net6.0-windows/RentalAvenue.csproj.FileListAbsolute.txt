@@ -82,3 +82,9 @@ D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\runtimes\win
 D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.dll
+D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Json.dll
+D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll

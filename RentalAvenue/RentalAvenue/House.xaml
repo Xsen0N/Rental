@@ -129,7 +129,7 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Width="280">
-                <TextBlock Text="Написать владельцу" 
+                <TextBlock Text="{DynamicResource Write}" 
                    FontWeight="Bold"
                    HorizontalAlignment="Center"
                    Margin="0,0,0,10"/>
@@ -148,7 +148,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Имя:" 
+                    <TextBlock Text="{DynamicResource Write}" 
                        Margin="0,0,0,10"
                        VerticalAlignment="Center"/>
 
@@ -157,7 +157,7 @@
                              Width="150"/>
 
                     <TextBlock Grid.Row="1" 
-                       Text="Email:" 
+                       Text="{DynamicResource Email}" 
                        Margin="0,0,0,10"
                        VerticalAlignment="Center"/>
 
@@ -167,7 +167,7 @@
                      Margin="10,0,0,10"/>
 
                     <TextBlock Grid.Row="2" 
-                       Text="Детали :" 
+                       Text="{DynamicResource DescLabel}" 
                        VerticalAlignment="Center"/>
 
                     <TextBox Grid.Row="2" 
@@ -177,9 +177,11 @@
 
                     <Button Grid.Row="4" 
                     Grid.Column="1" 
-                    HorizontalAlignment="Left"
-                    Content="Отправить" 
-                    VerticalAlignment="Top" Margin="32,10,0,0"/>
+                    HorizontalAlignment="Center"
+                            Width="80"
+                            Height="15"
+                    Content="{DynamicResource Submit}" 
+                    VerticalAlignment="Top" Margin="0,10,0,0"/>
                 </Grid>
             </StackPanel>
         </Grid>

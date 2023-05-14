@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static RentalAvenue.Entities;
 
 namespace RentalAvenue
 {
@@ -20,27 +24,32 @@ namespace RentalAvenue
     /// </summary>
     public partial class Rent : Window
     {
+        internal static DatabaseContext db = DB.connector;
+        private readonly ResourceDictionary enDict = new ResourceDictionary() { Source = new Uri("Resources/langEN.xaml", UriKind.Relative) };
+        private readonly ResourceDictionary ruDict = new ResourceDictionary() { Source = new Uri("Resources/langRU.xaml", UriKind.Relative) };
         public Rent()
         {
             InitializeComponent();
+            Resources.MergedDictionaries.Add(ruDict); // словарь русских слов
 
         }
         private void OnSubmit(object sender, RoutedEventArgs e)
         {
             // Создаем новый объект жилья и заполняем его данными из формы
-            RentalProperty property = new RentalProperty();
-            property.PropertyType = PropertyTypeComboBox.Text;
-            property.Addres = AddressTextBox.Text;
-            property.Price = Convert.ToDouble(PriceTextBox.Text);
-            property.Rooms = Convert.ToInt32(RoomsComboBox.Text);
-            property.Description = DescriptionTextBox.Text;
+            string type = PropertyTypeComboBox.SelectedValue.ToString();
+            string Address = AddressTextBox.Text;
+            //Houses houses = new Houses();
+            Houses houses = db.Houses.FirstOrDefault(pt => pt.PropertyType == PropertyTypeComboBox.SelectedValue);
+
+            // Создаем новый объект жилья и заполняем его данными из формы
+
+            int Price = Convert.ToInt32(PriceTextBox.Text);
+            int Rooms = Convert.ToInt32(RoomsComboBox.Text);
+            string Description = DescriptionTextBox.Text;
 
             // Добавляем объект в базу данных
-            //using (var db = new RentalDbContext())
-            //{
-            //    db.RentalProperties.Add(property);
-            //    db.SaveChanges();
-            //}
+            // _context.Houses.Add(houses);
+            //_context.SaveChanges();
 
             // Очищаем форму для следующего ввода
             PropertyTypeComboBox.SelectedIndex = 0;
