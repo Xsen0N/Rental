@@ -78,7 +78,7 @@
                 </ListBox.ItemsPanel>
             </ListBox>
         </Grid>
-        <Grid x:Name="Content" Grid.Row="3">
+        <Grid x:Name="Content" Grid.Row="3" >
             <Grid Background="#FFE5E5E5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="220*"/>
@@ -116,12 +116,13 @@
                                         <ColumnDefinition />
 
                                     </Grid.ColumnDefinitions>
-                                    <Image Source="{Binding ImagePath}" Grid.ColumnSpan="2" Grid.Row="0" Width="200" Height="200"/>
+                                    <Image Source="{Binding Img}" Grid.ColumnSpan="2" Grid.Row="0" Width="200" Height="200"/>
                                     <Button Content="Like" Margin="0,5,5,0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" Height="20" Width="25"/>
-                                    <TextBlock Text="{Binding city}" HorizontalAlignment="Left" Width="85" Grid.Column="0"  Grid.Row="1"  Grid.RowSpan="2"/>
-                                    <TextBlock Text="{Binding country, StringFormat= \, \{0\} }" HorizontalAlignment="Left" Width="85"  Grid.Row="1" Grid.Column="1" />
-                                    <TextBlock Text="{Binding metrage, StringFormat=• \{0\} }" Width="85" HorizontalAlignment="Left" Grid.Row="2"  Grid.Column="0" />
-                                    <TextBlock Text="{Binding cost, StringFormat=$ \{0\}}" Width="85" HorizontalAlignment="Left" Grid.Row="3" Grid.RowSpan="2" />
+                                    <TextBlock Text="{Binding Address}" HorizontalAlignment="Left" Width="85" Grid.Column="0"  Grid.Row="1"  Grid.RowSpan="2"/>
+                                    <TextBlock Text="{Binding Owner, StringFormat= \, \{0\} }" HorizontalAlignment="Left" Width="85"  Grid.Row="1" Grid.Column="1" />
+                                    <TextBlock Text="{Binding Metrage, StringFormat=• \{0\} }" Width="85" HorizontalAlignment="Left" Grid.Row="2"  Grid.Column="0" />
+                                    <TextBlock Text="{Binding Rooms, StringFormat=• \{0\}  }" Width="85" HorizontalAlignment="Left" Grid.Row="2"  Grid.Column="1" />
+                                   
                                 </Grid>
                             </StackPanel>
 

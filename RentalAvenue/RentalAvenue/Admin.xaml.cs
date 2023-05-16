@@ -61,16 +61,22 @@ namespace RentalAvenue
                // ShowCurrentReview();
             }
         }
-        private void DisplayCurrentReview()
+        private void DatabaseSelectionChanged(object sender, SelectionChangedEventArgs e) // закидывает выделенный товар в поля формы для изменения
         {
-            // Получаем текущий отзыв и пользователя
-            //Review currentReview = _reviews[_currentReviewIndex];
-            //User currentUser = _users[currentReview.UserId];
+            if (Database.SelectedItem != null)
+            {
+                Houses selectedModel = (Houses)Database.SelectedItem;
 
-            //// Обновляем соответствующие элементы интерфейса
-            //ReviewTextBlock.Text = currentReview.Comment;
-            //UserNameTextBlock.Text = currentUser.Name;
-            //UserAvatarImage.Source = new BitmapImage(new Uri(currentUser.AvatarUrl));
+                newItemID.Text = selectedModel.Id.ToString();
+                newItemProperty.Text = selectedModel.PropertyType.Type;
+                newItemAddres.Text = selectedModel.Address;
+                newItemRoom.Text = selectedModel.Rooms.ToString();
+                newItemDesc.Text = selectedModel.Description;
+                newItemPrice.Text = selectedModel.Price.ToString();
+                AddImageButton.Content = selectedModel.Img;
+
+                AddItemButton.Content = "Изменить товар";
+            }
         }
         private void MenuToggleButton_Click(object sender, RoutedEventArgs e)
         {

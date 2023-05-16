@@ -75,7 +75,7 @@
         </Grid>
         <TabControl x:Name="tabControl" Grid.Row="2" Grid.RowSpan="2">
             <TabItem Header="{DynamicResource Tab1}" Style="{DynamicResource TabItemStye}" Grid.Row="3">
-                <Grid ShowGridLines="True" Grid.RowSpan="3" >
+                <Grid ShowGridLines="False" Grid.RowSpan="3" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="8*" />
                         <ColumnDefinition Width="32*"/>
@@ -89,10 +89,10 @@
                         <RowDefinition Height="0.85*" />
                         <RowDefinition Height="0.15*" />
                     </Grid.RowDefinitions>
-                    
-                    <DataGrid  x:Name="Database" ItemsSource="{Binding Source=ItemList}" AutoGenerateColumns="False" IsReadOnly="True"  Grid.ColumnSpan="7" Margin="0,0,238,60">
+
+                    <DataGrid  x:Name="Database" ItemsSource="{Binding Source=ItemList}"  AutoGenerateColumns="False" IsReadOnly="True"  Grid.ColumnSpan="6" Margin="0,0,0,60" BorderThickness="0" SelectionChanged="DatabaseSelectionChanged">
                         <DataGrid.Columns>
-                            <DataGridTextColumn
+                            <DataGridTextColumn                                
                                 x:Name="IDColumnHeaderName"
                                 Width="*"
                                 Binding="{Binding Id}"
@@ -120,7 +120,7 @@
                                 x:Name="RoomsColumnHeaderName"
                                 Width="*"
                                 Binding="{Binding Rooms}"
-                                Header="{DynamicResource RoomsLabel}"  CellStyle="{DynamicResource DataGridStyle}"/>
+                                Header="{DynamicResource RoomsLabel}"  />
 
                             <DataGridTextColumn
                                 x:Name="ImgPathColumnHeaderName"
@@ -130,9 +130,9 @@
                             <DataGridTextColumn
                                 x:Name="DescColumnHeaderName"
                                 Width="*"
-                                Binding="{Binding DescLabel}"
+                                Binding="{Binding Description}"
                                 Header="{DynamicResource DescLabel}" />
-                            
+
                         </DataGrid.Columns>
                     </DataGrid>
                     <UniformGrid 
@@ -161,16 +161,16 @@
                         <Button x:Name="LoadData" Content="{DynamicResource LoadDataFromFile}" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left"  Style="{DynamicResource ButtonStyle}" Height="24" Margin="45,0,0,-10" Width="121"/>
                         <Button x:Name="undoButton" Content="Undo"  HorizontalAlignment="Left" Margin="0,0,0,-7" VerticalAlignment="Bottom"  Style="{DynamicResource ButtonStyle}"/>
                         <Button x:Name="RedoButton"  Content="Redo"  HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{DynamicResource ButtonStyle}" Margin="224,-13,0,0"/>
-                        <Button x:Name="SaveData"  Content="{DynamicResource SaveDataToFile}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="158,-12,0,0"  Style="{DynamicResource ButtonStyle}" Height="17" Width="112"/>
+                        <Button x:Name="SaveData"  Content="{DynamicResource SaveDataToFile}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="127,-12,0,0"  Style="{DynamicResource ButtonStyle}" Height="17" Width="143"/>
                     </UniformGrid>
-                    <UniformGrid  Grid.Column="6" Style="{DynamicResource UniformGridStyle}" Grid.Row="1">
+                    <UniformGrid  Grid.Column="6" Style="{DynamicResource UniformGridStyle}" Grid.Row="1" Margin="0,14,0,0">
                         <Button x:Name="DeleteItemButton" Command="ApplicationCommands.Delete" Content="{DynamicResource DeleteItemButton}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Height="18" Width="97" Margin="0,9,0,0"/>
                         <TextBox x:Name="deletedItemIdInput" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}" Margin="21,10,0,0" Height="17"/>
                     </UniformGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="{DynamicResource Tab2}" Style="{DynamicResource TabItemStye}" Grid.Row="3">
-                <Grid ShowGridLines="True" Grid.RowSpan="3" >
+                <Grid ShowGridLines="False" Grid.RowSpan="3" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="77*" />
                         <ColumnDefinition Width="245*"/>

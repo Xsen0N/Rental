@@ -1,4 +1,4 @@
-﻿
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,9 @@ namespace RentalAvenue
             InitializeComponent();
             this.SizeToContent = SizeToContent.Manual;
             Resources.MergedDictionaries.Add(ruDict); // словарь русских слов
-
+            db.PropertyType.Load();
+            db.Houses.Load();
+            ItemsList.ItemsSource = db.Houses.ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
