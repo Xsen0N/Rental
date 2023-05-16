@@ -3,33 +3,53 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:v="clr-namespace:System;assembly=mscorlib">
 
-    <v:String x:Key="shopTitle">YourHouse</v:String>
-    <v:String x:Key="Tab1">Items list</v:String>
-    <v:String x:Key="Tab2">Items table</v:String>
-    <v:String x:Key="Tab3">Settings</v:String>
-	
-	<v:String x:Key="AddItemButton">Add</v:String>
-    <v:String x:Key="DeleteItemButton">Delete by ID</v:String>
-    <v:String x:Key="ClearFormButton">Clear form</v:String>
+
+    <v:String x:Key="shopTitle">RentalAvenue</v:String>
+    <v:String x:Key="Tab1">Real Estate</v:String>
+    <v:String x:Key="Tab2">Users</v:String>
+    <v:String x:Key="Tab3">Application reviews</v:String>
+    <v:String x:Key="AddItemButton">Add</v:String>
+    <v:String x:Key="DeleteItemButton">Remove by ID</v:String>
     <v:String x:Key="AddImageButton">Load image</v:String>
+    <v:String x:Key="ClearFormButton">Clear form</v:String>
     <v:String x:Key="SeachLabel">Search:</v:String>
-	
-    <v:String x:Key="Id">ID</v:String>
-    <v:String x:Key="CityLabel">City</v:String>
+    <v:String x:Key="Like">Like</v:String>
+
+    <v:String x:Key="Id">No</v:String>
+    <v:String x:Key="PropertyLabel">Type</v:String>
     <v:String x:Key="PriceLabel">Price</v:String>
-    <v:String x:Key="BedsLabel">Amount of Beds</v:String>
-    <v:String x:Key="MetrLabel">Metrage</v:String>
-    <v:String x:Key="ImagePathLabel">Image path</v:String>
+    <v:String x:Key="AddresLabel">Addres</v:String>
+    <v:String x:Key="BedsLabel">Number of bedrooms</v:String>
+    <v:String x:Key="MetrLabel">Meterage</v:String>
+    <v:String x:Key="ImagePathLabel">Path to image</v:String>
     <v:String x:Key="DescLabel">Description</v:String>
 
     <v:String x:Key="LoadDataFromFile">Load from file</v:String>
     <v:String x:Key="SaveDataToFile">Save data to file</v:String>
 
-    <v:String x:Key="SelectLangLabel">Language</v:String>
+    <v:String x:Key="SelectLangLabel">Language:</v:String>
     <v:String x:Key="LangRu">Russian</v:String>
     <v:String x:Key="LangEn">English</v:String>
 
-    <v:String x:Key="SelectStyleLabel">Theme:</v:String>
-    <v:String x:Key="StyleLight">Light theme</v:String>
-    <v:String x:Key="StyleDark">Juicy theme</v:String>
+    <v:String x:Key="Regist">Login/Register</v:String>
+    <v:String x:Key="Login">Login</v:String>
+    <v:String x:Key="Email">Email</v:String>
+    <v:String x:Key="Submit">Confirm</v:String>
+
+    <v:String x:Key="RentLabel">Lent</v:String>
+    <v:String x:Key="TypeLabel">Select housing type</v:String>
+    <v:String x:Key="Price">Price per day($)</v:String>
+    <v:String x:Key="Img">Load image</v:String>
+    <v:String x:Key="Metr">Meterage</v:String>
+
+    <v:String x:Key="UserAccount">Personal Area</v:String>
+    <v:String x:Key="RentHouse">Publish offer</v:String>
+    <v:String x:Key="Exit">Exit</v:String>
+    <v:String x:Key="Register">Register</v:String>
+
+    <v:String x:Key="Write">Write to the owner</v:String>
+    <v:String x:Key="Name">Name</v:String>
+    <v:String x:Key="Review">Reviews and recommendations from our users</v:String>
+
+    <v:String x:Key="AddReview">Leave a review of the app</v:String>
 </ResourceDictionary>

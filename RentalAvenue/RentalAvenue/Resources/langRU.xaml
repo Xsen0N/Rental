@@ -6,11 +6,13 @@
     <v:String x:Key="shopTitle">RentalAvenue</v:String>
     <v:String x:Key="Tab1">Недвижимость</v:String>
     <v:String x:Key="Tab2">Пользователи</v:String>
+    <v:String x:Key="Tab3">Oтзывы о приложении</v:String>
     <v:String x:Key="AddItemButton">Добавить</v:String> 
     <v:String x:Key="DeleteItemButton">Удалить по ID</v:String>
     <v:String x:Key="AddImageButton">Загрузить изображение</v:String>
     <v:String x:Key="ClearFormButton">Очистить форму</v:String>
 	<v:String x:Key="SeachLabel">Поиск:</v:String>
+    <v:String x:Key="Like">Понравилось</v:String>
 
     <v:String x:Key="Id">№</v:String>
     <v:String x:Key="PropertyLabel">Тип</v:String>
@@ -39,13 +41,17 @@
     <v:String x:Key="Img">Загрузить изображение</v:String>
     <v:String x:Key="Metr">Метраж</v:String>
 
-    <v:String x:Key="UserAccount">Личный кабинет</v:String>
+    <v:String x:Key="UserAccount">Понравившиеся</v:String>
     <v:String x:Key="RentHouse">Опубликовать предложение</v:String>
-    <v:String x:Key="Exit">Опубликовать предложение</v:String>
+    <v:String x:Key="Exit">Выход</v:String>
     <v:String x:Key="Register">Регистрация</v:String>
 
     <v:String x:Key="Write">Написать владельцу</v:String>
     <v:String x:Key="Name">Имя</v:String>
-    
+    <v:String x:Key="Review">Отзывы и рекомендации наших пользователей</v:String>
+
+    <v:String x:Key="AddReview">Оставить отзыв о приложении</v:String>
+
+
 
 </ResourceDictionary>

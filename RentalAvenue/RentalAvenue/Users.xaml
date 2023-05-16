@@ -10,6 +10,11 @@
         <ImageBrush ImageSource="img\fon.jpg" Viewbox="0,0,0.5,1" Opacity="0.8"   />
     </Window.Background>
     <Grid x:Name="UserPage">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid x:Name="Header" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -46,6 +51,57 @@
                 </Border>
             </Popup>
         </Grid>
-        
+        <Grid x:Name="Content" Grid.Row="1">
+            <Grid Background="#FFE5E5E5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="220*"/>
+                    <RowDefinition Height="212*"/>
+                    <RowDefinition Height="212*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="31*"/>
+                    <ColumnDefinition Width="115*"/>
+                    <ColumnDefinition Width="146*"/>
+                    <ColumnDefinition Width="146*"/>
+                </Grid.ColumnDefinitions>
+                <ListBox x:Name="ItemsList"  Grid.ColumnSpan="4" Grid.RowSpan="3" d:ItemsSource="{d:SampleData ItemCount=6}" Margin="0,0,2,-126" RenderTransformOrigin="0.5,0.5" >
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="796" Height="Auto"  />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding ImagePath}" Grid.ColumnSpan="2" Grid.Row="0" Width="200" Height="200"/>
+                                    <Button Content="Like" Margin="0,5,5,0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" Height="20" Width="25"/>
+                                    <TextBlock Text="{Binding city}" HorizontalAlignment="Left" Width="85" Grid.Column="0"  Grid.Row="1"  Grid.RowSpan="2"/>
+                                    <TextBlock Text="{Binding country, StringFormat= \, \{0\} }" HorizontalAlignment="Left" Width="85"  Grid.Row="1" Grid.Column="1" />
+                                    <TextBlock Text="{Binding metrage, StringFormat=• \{0\} }" Width="85" HorizontalAlignment="Left" Grid.Row="2"  Grid.Column="0" />
+                                    <TextBlock Text="{Binding cost, StringFormat=$ \{0\}}" Width="85" HorizontalAlignment="Left" Grid.Row="3" Grid.RowSpan="2" />
+                                </Grid>
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

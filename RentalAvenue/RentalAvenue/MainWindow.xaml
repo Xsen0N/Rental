@@ -12,7 +12,6 @@
     <Grid x:Name="MainShopGrid">
 
         <Grid.RowDefinitions>
-
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -45,10 +44,10 @@
                   Placement="Bottom" StaysOpen="False">
                 <Border Background="White" BorderThickness="0" BorderBrush="Beige">
                     <StackPanel Background="White" Margin="5" >
-                        <Button Click="MenuToggleButton_Click" Content="Личный кабинет"/>
-                        <Button Click="RegisterButton_Click" Content="Опубликовать предложение"/>
-                        <Button Click="MenuToggleButton_Click" Content="Оставить отзыв о приложении"/>
-                        <Button Click="ExitButton_Click" Content="Выход"/>
+                        <Button Click="MenuToggleButton_Click" Content="{DynamicResource UserAccount}"/>
+                        <Button Click="RegisterButton_Click" Content="{DynamicResource RentHouse}"/>
+                        <Button Click="MenuToggleButton_Click" Content="{DynamicResource AddReview}"/>
+                        <Button Click="ExitButton_Click" Content="{DynamicResource Exit}"/>
                     </StackPanel>
                 </Border>
             </Popup>

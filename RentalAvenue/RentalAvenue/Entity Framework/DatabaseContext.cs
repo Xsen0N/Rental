@@ -14,6 +14,7 @@ namespace RentalAvenue
         public DbSet<Houses> Houses { get; set; }
         public DbSet<PropertyType> PropertyType { get; set; }
 
+
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
             _ = Database.EnsureCreated();

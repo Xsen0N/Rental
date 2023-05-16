@@ -12,7 +12,7 @@
     <!--<Window.CommandBindings>
         <CommandBinding Command="{x:Static local:CustomCommands.AddHouse}" Executed="AddHouse"/>
     </Window.CommandBindings>-->
-    <Grid x:Name="MainRent" Background="White" HorizontalAlignment="Center" Height="550">
+    <Grid x:Name="MainRent"  HorizontalAlignment="Center" Height="550">
         <Grid Margin="10,0,0,37">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
