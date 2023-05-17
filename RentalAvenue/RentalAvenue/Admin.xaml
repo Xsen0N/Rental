@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentalAvenue"
         mc:Ignorable="d"
-        Title="Admin" Height="550" Width="800">
+        Title="Admin" Height="572" Width="800">
     <Grid x:Name="AdminPage">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>

@@ -32,6 +32,7 @@ namespace RentalAvenue
             db.PropertyType.Load();
             db.Houses.Load();
             ItemsList.ItemsSource = db.Houses.ToList();
+            AllFilters.ItemsSource = db.PropertyType.ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

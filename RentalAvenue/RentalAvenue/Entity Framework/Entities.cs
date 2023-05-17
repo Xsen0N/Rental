@@ -70,8 +70,10 @@ namespace RentalAvenue
             public int Id { get; set; }
 
             public string? Type { get; set; }
+            public string? Imgs { get; set; }
 
-           // public virtual ICollection<Houses> Houses { get; set; }
+
+            // public virtual ICollection<Houses> Houses { get; set; }
         }
 
 
