@@ -19,6 +19,9 @@
     <Compile Update="Rent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Review.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Users.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +40,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Rent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Review.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Users.xaml">

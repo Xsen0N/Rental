@@ -33,6 +33,7 @@ namespace RentalAvenue
             Entities.User? user = db.Users.FirstOrDefault(u => u.Email == email && u.Login == name);
             if (user != null)
             {
+                CurrentSessionUser.User = user;
                 if (user.Email == AdminEmail)
                 {
                     // Пользователь найден и это админ, делаем редирект на AdminWindow

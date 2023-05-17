@@ -43,11 +43,22 @@ namespace RentalAvenue
         {
             Rent rentalForm = new Rent();
             rentalForm.Show();
+            Close();
         }
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             Regist registrationForm = new Regist();
             registrationForm.Show();
+            Close();
+        }
+        private void RentButton_Click(object sender, RoutedEventArgs e)
+        {
+            Rent rentWindow = new()
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            rentWindow.Show();
+            Close();
         }
         private void MenuToggleButton_Click(object sender, RoutedEventArgs e)
         {

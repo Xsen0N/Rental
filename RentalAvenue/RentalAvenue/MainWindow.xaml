@@ -46,9 +46,19 @@
                 <Border Background="White" BorderThickness="0" BorderBrush="Beige">
                     <StackPanel Background="White" Margin="5" >
                         <Button Click="MenuToggleButton_Click" Content="{DynamicResource UserAccount}"/>
-                        <Button Click="RegisterButton_Click" Content="{DynamicResource RentHouse}"/>
+                        <Button Click="RentButton_Click" Content="{DynamicResource RentHouse}"/>
                         <Button Click="MenuToggleButton_Click" Content="{DynamicResource AddReview}"/>
                         <Button Click="ExitButton_Click" Content="{DynamicResource Exit}"/>
+                        <ComboBox x:Name="availableLanguagesList" HorizontalAlignment="Left" Margin="710,0,0,0" VerticalAlignment="Center" Width="107" SelectedIndex="0" Background="{x:Null}">
+                            <ComboBoxItem
+                            x:Name="Ru"
+                            Content="Русский"
+                            Selected="Ru_Selected"/>
+                            <ComboBoxItem
+                            x:Name="Eng"
+                            Selected="Eng_Selected"
+                            Content="English"/>
+                        </ComboBox>
                     </StackPanel>
                 </Border>
             </Popup>

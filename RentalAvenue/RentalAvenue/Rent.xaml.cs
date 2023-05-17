@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,9 +21,7 @@ using static RentalAvenue.Entities;
 
 namespace RentalAvenue
 {
-    /// <summary>
-    /// Логика взаимодействия для Rent.xaml
-    /// </summary>
+
     public partial class Rent : Window
     {
         internal static DatabaseContext db = DB.connector;
@@ -31,35 +31,93 @@ namespace RentalAvenue
         {
             InitializeComponent();
             Resources.MergedDictionaries.Add(ruDict); // словарь русских слов
+           // UserData.DataContext = Entity_Framework.CurrentSessionUser.User;
+
+        }
+        private void LoadImageFile(object sender, RoutedEventArgs e) // функция загрузки изображения
+        {
+            var openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "Изображения (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp"; // фильтр
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                BitmapImage image = new BitmapImage();
+
+                image.BeginInit();
+                image.UriSource = new Uri(openFileDialog.FileName);
+                image.EndInit();
+
+                PhotoTextBox.Content = "./" + image.UriSource.Segments[image.UriSource.Segments.Length - 2] + image.UriSource.Segments[image.UriSource.Segments.Length - 1]; // обрезка пути, использование только нужной
+            }
 
         }
         private void OnSubmit(object sender, RoutedEventArgs e)
         {
             // Создаем новый объект жилья и заполняем его данными из формы
-            string type = PropertyTypeComboBox.SelectedValue.ToString();
-            string Address = AddressTextBox.Text;
+            
             //Houses houses = new Houses();
-            Houses houses = db.Houses.FirstOrDefault(pt => pt.PropertyType == PropertyTypeComboBox.SelectedValue);
-
+            
             // Создаем новый объект жилья и заполняем его данными из формы
-
+            string img = PhotoTextBox.ContentStringFormat;
+            string type = PropertyTypeComboBox.Text;
+            string Address = AddressTextBox.Text;
+            int metr = Convert.ToInt32(Metr.Text);
             int Price = Convert.ToInt32(PriceTextBox.Text);
             int Rooms = Convert.ToInt32(RoomsComboBox.Text);
             string Description = DescriptionTextBox.Text;
+            Houses houses = db.Houses.FirstOrDefault(pt => pt.PropertyType.Type == PropertyTypeComboBox.Text);
 
-            // Добавляем объект в базу данных
-            // _context.Houses.Add(houses);
-            //_context.SaveChanges();
+            try
+            {
+                // считываем данные из полей ввода
 
-            // Очищаем форму для следующего ввода
-            PropertyTypeComboBox.SelectedIndex = 0;
-            AddressTextBox.Clear();
-            PriceTextBox.Clear();
-            RoomsComboBox.SelectedIndex = 0;
-            DescriptionTextBox.Clear();
+                // проверяем почту на уникальность
+                if (db.Houses.Any(u => u.Img == img && u.Metrage == metr))
+                {
+                    throw new Exception("Такое объявление уже есть");
+                }
 
-            // Показываем сообщение об успешной отправке данных
-            MessageBox.Show("Your rental property has been submitted successfully.");
+                // проверяем правильность ввода почты и телефона с помощью regex
+                string pattern = @"^(ул\.|str\.)\s*(\D+)\s+(\d+)(?:-(\d+))?";
+
+                if (!Regex.IsMatch(Address, pattern))
+                {
+                    throw new Exception("Неправильный формат улицы, введите по примерно так: ул. Примерная 123-45/str. Example 789");
+                }
+                PropertyType types = new PropertyType();
+                types.Type = type;
+
+                // создаем новый объект User
+                Houses newhouse = new()
+                {
+                    Address = Address,
+                    Price = Price,
+                    Metrage= metr,
+                    Rooms = Rooms,
+                    Owner = CurrentSessionUser.User.Login,
+                    Description = Description,
+                    PropertyType = types,
+                    Img = img
+                    
+                };
+
+                // добавляем нового пользователя в контекст данных
+                _ = db.Houses.Add(newhouse);
+                _ = db.SaveChanges();
+
+
+                // выводим сообщение об успешном завершении 
+                _ = MessageBox.Show("Заполнение прошло успешно!", "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                Close();
+            }
+            catch (Exception ex)
+            {
+                // выводим сообщение об ошибке
+                _ = MessageBox.Show($"Ошибка при добавлении объявления: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
     }
 }

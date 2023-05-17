@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:RentalAvenue"
         mc:Ignorable="d"
         Title="Admin" Height="572" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:CustomCommands.Paste}" Executed="LoadImageFile"/>
+    </Window.CommandBindings>
     <Grid x:Name="AdminPage">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -31,7 +34,7 @@
             <Label Content="{DynamicResource SeachLabel}" Grid.Column="1" Margin="190,16,0,18" HorizontalAlignment="Left" FontSize="11" Width="60" Grid.ColumnSpan="2"/>
             <TextBox x:Name="searchField" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="215" Height="22"   TextAlignment="Left"  Margin="309,0,0,0" Grid.ColumnSpan="2"  />
             <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="331,8,10,8" HorizontalAlignment="Right" >
-
+                <Button Content="{DynamicResource ToMain}"  Margin="5, 0, 0, 0" FontSize="11" Width="90" Height="20" Click="RegisterButton_Click" />
             </StackPanel>
 
             <Button x:Name="MenuToggleButton" Content="&#x2630;" FontSize="20" Background="Transparent"
@@ -151,21 +154,18 @@
                         <Label x:Name="RoomLabel" VerticalAlignment="Top" Content="{DynamicResource BedsLabel}"/>
                         <TextBox x:Name="newItemRoom" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}"/>
                         <Label x:Name="ImgLabel" Content="{DynamicResource ImagePathLabel}" VerticalAlignment="Top"/>
-                        <Button x:Name="AddImageButton" Command="ApplicationCommands.Paste" Content="{DynamicResource AddImageButton}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource ButtonStyle}" Height="18"/>
+                        <Button x:Name="AddImageButton"  Content="{DynamicResource AddImageButton}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch"  Height="18" Command="local:CustomCommands.Paste"/>
                         <Label x:Name="DescLabel" Content="{DynamicResource DescLabel}" VerticalAlignment="Top"/>
                         <TextBox x:Name="newItemDesc" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}"/>
                         <Button x:Name="AddItemButton" Content="{DynamicResource AddItemButton}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Height="22" Width="81" />
                         <Button x:Name="ClearFormButton" Command="ApplicationCommands.CancelPrint" Content="{DynamicResource ClearFormButton}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left"  Style="{DynamicResource ButtonStyle}" Height="22" Width="106" Margin="13,0,0,0"/>
                     </UniformGrid>
                     <UniformGrid Style="{DynamicResource UniformGridStyle}" Grid.ColumnSpan="7" Margin="0,0,238,0" Grid.Row="1">
-                        <Button x:Name="LoadData" Content="{DynamicResource LoadDataFromFile}" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left"  Style="{DynamicResource ButtonStyle}" Height="24" Margin="45,0,0,-10" Width="121"/>
-                        <Button x:Name="undoButton" Content="Undo"  HorizontalAlignment="Left" Margin="0,0,0,-7" VerticalAlignment="Bottom"  Style="{DynamicResource ButtonStyle}"/>
-                        <Button x:Name="RedoButton"  Content="Redo"  HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{DynamicResource ButtonStyle}" Margin="224,-13,0,0"/>
-                        <Button x:Name="SaveData"  Content="{DynamicResource SaveDataToFile}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="127,-12,0,0"  Style="{DynamicResource ButtonStyle}" Height="17" Width="143"/>
+                        <Button x:Name="SaveData"  Content="{DynamicResource SaveDataToFile}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="123,-19,0,0"   Height="17" Width="155"/>
                     </UniformGrid>
-                    <UniformGrid  Grid.Column="6" Style="{DynamicResource UniformGridStyle}" Grid.Row="1" Margin="0,14,0,0">
-                        <Button x:Name="DeleteItemButton" Command="ApplicationCommands.Delete" Content="{DynamicResource DeleteItemButton}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Height="18" Width="97" Margin="0,9,0,0"/>
-                        <TextBox x:Name="deletedItemIdInput" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}" Margin="21,10,0,0" Height="17"/>
+                    <UniformGrid  Grid.Column="6" Style="{DynamicResource UniformGridStyle}" Grid.Row="1" Margin="0,9,0,5">
+                        <Button x:Name="DeleteItemButton" Command="ApplicationCommands.Delete" Content="{DynamicResource DeleteItemButton}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch"  HorizontalAlignment="Left" Height="18" Width="97" Margin="0,-1,0,0"/>
+                        <TextBox x:Name="deletedItemIdInput" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}" Margin="21,0,0,0" Height="17"/>
                     </UniformGrid>
                 </Grid>
             </TabItem>
@@ -189,7 +189,7 @@
                                 x:Name="IDColumnHeaderName1"
                                 Width="*"
                                 Binding="{Binding Id}"
-                                Header="{DynamicResource I}" MinWidth="3" MaxWidth="30" CellStyle="{DynamicResource DataGridStyle}"/>
+                                Header="{DynamicResource Id}" MinWidth="3" MaxWidth="30" CellStyle="{DynamicResource DataGridStyle}"/>
 
                             <DataGridTextColumn
                                 x:Name="LoginColumnHeaderName1"
@@ -208,7 +208,7 @@
                         Columns="1"
                         Rows="8"
                         Style="{DynamicResource UniformGridStyle}" Height="250" Margin="28,44,41,65">
-                        <Label x:Name="IDUserLabel" Content="{DynamicResource ID}" VerticalAlignment="Top" Margin="10"/>
+                        <Label x:Name="IDUserLabel" Content="{DynamicResource Id}" VerticalAlignment="Top" Margin="10"/>
                         <TextBox x:Name="newItemIDUser"   TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}" />
                         <Label x:Name="LoginLabel" Content="{DynamicResource Login}" VerticalAlignment="Top"/>
                         <TextBox x:Name="newItemLogin" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}"/>
@@ -244,7 +244,7 @@
                    Margin="10"/>
 
                     <!-- Контейнер для отзывов -->
-                    <StackPanel Grid.Row="1"
+                    <StackPanel Grid.Row="1" 
                     Orientation="Horizontal">
                         <!-- Кнопка "Назад" -->
                         <Button Content="&lt;"
@@ -254,16 +254,15 @@
                     Click="OnPrevClick"/>
 
                         <!-- Контейнер для отзывов -->
-                        <StackPanel x:Name="ReviewsContainer"
-                        Orientation="Vertical"
-                                    Background="#63AFD0"
+                        <ListBox x:Name="ReviewsContainer"
+                        Background="#63AFD0"
                         Margin="10"
                         Width="626"
                         ScrollViewer.CanContentScroll="True"
                         ScrollViewer.VerticalScrollBarVisibility="Auto"
-                        ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="243">
-                            <!-- Список отзывов -->
-                        </StackPanel>
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="243" d:ItemsSource="{d:SampleData ItemCount=2}">
+
+                        </ListBox>
 
                         <!-- Кнопка "Вперед" -->
                         <Button Content=">"

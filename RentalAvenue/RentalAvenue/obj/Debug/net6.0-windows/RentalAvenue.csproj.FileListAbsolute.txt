@@ -88,3 +88,5 @@ D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\Microsoft.Ex
 D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
 D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
 D:\rental\Rental\RentalAvenue\RentalAvenue\bin\Debug\net6.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\rental\Rental\RentalAvenue\RentalAvenue\obj\Debug\net6.0-windows\Review.g.cs
+D:\rental\Rental\RentalAvenue\RentalAvenue\obj\Debug\net6.0-windows\Review.baml

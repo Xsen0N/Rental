@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,10 +37,10 @@ namespace RentalAvenue
             //_reviews = LoadReviews();
             db.PropertyType.Load();
             db.Houses.Load();
+            db.Users.Load();
             Database.ItemsSource = db.Houses.ToList();
-            //DataContext = admin;
-            //// Отображаем первый отзыв
-            //ShowCurrentReview();
+            Database1.ItemsSource= db.Users.ToList();
+
         }
         private void OnPrevClick(object sender, RoutedEventArgs e)
         {
@@ -49,6 +50,14 @@ namespace RentalAvenue
                 _currentIndex--;
                // ShowCurrentReview();
             }
+        }
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new()
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            mainWindow.Show();
         }
 
         // Обработчик нажатия на кнопку "Вперед"
@@ -75,8 +84,41 @@ namespace RentalAvenue
                 newItemPrice.Text = selectedModel.Price.ToString();
                 AddImageButton.Content = selectedModel.Img;
 
-                AddItemButton.Content = "Изменить товар";
             }
+        }
+        private void LoadImageFile(object sender, RoutedEventArgs e) // функция загрузки изображения
+        {
+            var openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "Изображения (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp"; // фильтр
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                BitmapImage image = new BitmapImage();
+
+                image.BeginInit();
+                image.UriSource = new Uri(openFileDialog.FileName);
+                image.EndInit();
+
+                AddImageButton.Content = "./" + image.UriSource.Segments[image.UriSource.Segments.Length - 2] + image.UriSource.Segments[image.UriSource.Segments.Length - 1]; // обрезка пути, использование только нужной
+            }
+
+        }
+        private void ClearForm(object sender, RoutedEventArgs e) // очищает форму
+        {
+
+            newItemID.Clear();
+            newItemProperty.Clear();
+            newItemAddres.Clear();
+            newItemRoom.Clear();
+            newItemPrice.Clear();
+            newItemDesc.Clear();
+
+
+            AddImageButton.Content = "";
+            AddItemButton.Content = "Добавить товар";
+            MessageBox.Show("Форма очищена!");
+
         }
         private void MenuToggleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -88,11 +130,7 @@ namespace RentalAvenue
 
             rentalForm.Show();
         }
-        private void RegisterButton_Click(object sender, RoutedEventArgs e)
-        {
-            Regist registrationForm = new Regist();
-            registrationForm.Show();
-        }
+
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

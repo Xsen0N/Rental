@@ -51,7 +51,8 @@
     <v:String x:Key="Review">Отзывы и рекомендации наших пользователей</v:String>
 
     <v:String x:Key="AddReview">Оставить отзыв о приложении</v:String>
-
-
+    <v:String x:Key="ToMain">На главную</v:String>
+    <v:String x:Key="NewRew">Ваш отзыв</v:String>
+    <v:String x:Key="YourReview">Оставьте отзыв о приложении</v:String>
 
 </ResourceDictionary>
