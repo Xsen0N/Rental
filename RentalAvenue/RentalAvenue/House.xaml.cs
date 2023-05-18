@@ -25,6 +25,7 @@ namespace RentalAvenue
         {
             InitializeComponent();
             Resources.MergedDictionaries.Add(ruDict); // словарь русских слов
+
         }
         private void MenuToggleButton_Click(object sender, RoutedEventArgs e)
         {

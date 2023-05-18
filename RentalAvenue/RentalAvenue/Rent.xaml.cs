@@ -48,26 +48,23 @@ namespace RentalAvenue
                 image.UriSource = new Uri(openFileDialog.FileName);
                 image.EndInit();
 
-                PhotoTextBox.Content = "./" + image.UriSource.Segments[image.UriSource.Segments.Length - 2] + image.UriSource.Segments[image.UriSource.Segments.Length - 1]; // обрезка пути, использование только нужной
+                PhotoTextBox.Content = image.UriSource.AbsoluteUri; // использование полного пути к файлу // обрезка пути, использование только нужной
             }
 
         }
         private void OnSubmit(object sender, RoutedEventArgs e)
         {
-
             try
             {
-                
-                
-            string img = PhotoTextBox.Content.ToString();
-            string type = PropertyTypeComboBox.Text;
-            string Address = AddressTextBox.Text;
-            int metr = Convert.ToInt32(Metr.Text);
-            int Price = Convert.ToInt32(PriceTextBox.Text);
-            int Rooms = Convert.ToInt32(RoomsComboBox.Text);
-            string Description = DescriptionTextBox.Text;
-            Houses houses = db.Houses.FirstOrDefault(pt => pt.PropertyType.Type == PropertyTypeComboBox.Text);
-                // считываем данные из полей ввода
+                User owner = CurrentSessionUser.User;
+                int OId = CurrentSessionUser.User.Id;
+                string img = PhotoTextBox.Content.ToString();
+                string type = PropertyTypeComboBox.Text;
+                string Address = AddressTextBox.Text;
+                int metr = Convert.ToInt32(Metr.Text);
+                int Price = Convert.ToInt32(PriceTextBox.Text);
+                int Rooms = Convert.ToInt32(RoomsComboBox.Text);
+                string Description = DescriptionTextBox.Text;
 
                 // проверяем почту на уникальность
                 if (db.Houses.Any(u => u.Img == img && u.Metrage == metr))
@@ -82,33 +79,39 @@ namespace RentalAvenue
                 {
                     throw new Exception("Неправильный формат улицы, введите по примерно так: ул. Примерная 123-45/str. Example 789");
                 }
-                PropertyType types = new PropertyType();
-                types.Type = type;
 
-                // создаем новый объект User
+                PropertyType propertyType = db.PropertyType.FirstOrDefault(pt => pt.Type == type);
+
+                // создаем новый объект Houses
                 Houses newhouse = new()
                 {
                     Address = Address,
                     Price = Price,
-                    Metrage= metr,
+                    Metrage = metr,
                     Rooms = Rooms,
-                    Owner = CurrentSessionUser.User.Id.ToString(),
+                    Owner = owner,
+                    OwnerId = OId,
                     Description = Description,
-                    PropertyType = types,
-                    Img = img
-                    
+                    PropertyType = propertyType, // Используем существующий объект propertyType
+                    Img = img,
+                    IsFavorite = false
                 };
 
-                // добавляем нового пользователя в контекст данных
+                User currentUser = db.Users.FirstOrDefault(u => u.Id == CurrentSessionUser.User.Id);
+                if (currentUser != null)
+                {
+                    newhouse.Owner = owner;
+                    newhouse.OwnerId = OId;
+                }
+
+                // добавляем новый дом в контекст данных
                 _ = db.Houses.Add(newhouse);
                 _ = db.SaveChanges();
-
 
                 // выводим сообщение об успешном завершении 
                 _ = MessageBox.Show("Заполнение прошло успешно!", "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 Close();
-            
             }
             catch (Exception ex)
             {

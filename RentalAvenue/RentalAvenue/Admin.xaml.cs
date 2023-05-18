@@ -40,6 +40,7 @@ namespace RentalAvenue
             db.Users.Load();
             Database.ItemsSource = db.Houses.ToList();
             Database1.ItemsSource= db.Users.ToList();
+            //ReviewsContainer.ItemsSource = db.Review.ToList();
 
         }
         private void OnPrevClick(object sender, RoutedEventArgs e)
@@ -100,7 +101,7 @@ namespace RentalAvenue
                 image.UriSource = new Uri(openFileDialog.FileName);
                 image.EndInit();
 
-                AddImageButton.Content = "./" + image.UriSource.Segments[image.UriSource.Segments.Length - 2] + image.UriSource.Segments[image.UriSource.Segments.Length - 1]; // обрезка пути, использование только нужной
+                AddImageButton.Content = image.UriSource.AbsoluteUri; // обрезка пути, использование только нужной
             }
 
         }

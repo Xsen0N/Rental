@@ -13,6 +13,8 @@ namespace RentalAvenue
         public DbSet<User> Users { get; set; }
         public DbSet<Houses> Houses { get; set; }
         public DbSet<PropertyType> PropertyType { get; set; }
+        public DbSet<Entities.Review> Review { get; set; }
+        public DbSet<FavoriteHouses> FavoriteHouses { get; set; }
 
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)

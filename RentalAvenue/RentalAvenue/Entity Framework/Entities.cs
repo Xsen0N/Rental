@@ -43,27 +43,27 @@ namespace RentalAvenue
         {
             public int Id { get; set; }
             public int UserId { get; set; }
-            public virtual User? User { get; set; }
-            public int Houses { get; set; }
-            public virtual Houses? AnyHouses { get; set; }
+            public virtual User? Users { get; set; }
+            public int HouseId { get; set; }
+
 
 
         }
         public class Houses
         {
-            [Key]
+            
             public int Id { get; set; }
             public string? Address { get; set; }
             public int? Price { get; set; }
             public int? Metrage { get; set; }
             public int? Rooms { get; set; }
-            public string? Owner { get; set; }
+            public User? Owner { get; set; }
 
-            public int OwnerId { get; set; }
+            public int? OwnerId { get; set; }
             public string? Description { get; set; }
             
-            public int PropertyTypeId { get; set; }
-            public virtual PropertyType PropertyType { get; set; }
+            public int? PropertyTypeId { get; set; }
+            public virtual PropertyType? PropertyType { get; set; }
             public string? Img { get; set; }
             public bool IsFavorite { get; set; }
         }
@@ -75,8 +75,6 @@ namespace RentalAvenue
             public string? Type { get; set; }
             public string? Imgs { get; set; }
 
-
-            // public virtual ICollection<Houses> Houses { get; set; }
         }
 
 

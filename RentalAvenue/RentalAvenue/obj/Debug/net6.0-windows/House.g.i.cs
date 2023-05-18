@@ -93,7 +93,7 @@ namespace RentalAvenue {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/RentalAvenue;V1.0.0.0;component/house.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/RentalAvenue;component/house.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\House.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

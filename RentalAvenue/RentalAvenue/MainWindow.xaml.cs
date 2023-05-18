@@ -25,6 +25,7 @@ namespace RentalAvenue
         internal static DatabaseContext db = DB.connector;
         private readonly ResourceDictionary enDict = new ResourceDictionary() { Source = new Uri("Resources/langEN.xaml", UriKind.Relative) };
         private readonly ResourceDictionary ruDict = new ResourceDictionary() { Source = new Uri("Resources/langRU.xaml", UriKind.Relative) };
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -65,6 +66,7 @@ namespace RentalAvenue
             };
             rentWindow.Show();
         }
+        
         private void SearchField_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchText = searchField.Text; // Получаем текст из TextBox
@@ -118,5 +120,16 @@ namespace RentalAvenue
             Rent rentalForm = new Rent();
             rentalForm.Show();
         }
+
+        private void searchField_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            string searchText = searchField.Text; // Получаем текст из TextBox
+
+            db.Houses.Load();
+            ItemsList.ItemsSource = db.Houses.ToList().Where(house => house.Address.Contains(searchText));
+
+        }
+
+        
     }
 }
