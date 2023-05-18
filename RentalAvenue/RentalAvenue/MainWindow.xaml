@@ -36,7 +36,7 @@
             <TextBox x:Name="searchField" Grid.Column="3" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="177" Height="22"   TextAlignment="Left"  Margin="38,0,0,0"  />
             <StackPanel Orientation="Horizontal" Grid.Column="3" Margin="331,8,0,8" HorizontalAlignment="Left" >
                 <Button Click="OnNavigateToRentalForm" Content="{DynamicResource RentLabel}"  FontSize="11" Height="21" Width="90"   />
-                <Button Content="{DynamicResource Register}"  Margin="5, 0, 0, 0" FontSize="11" Width="90" Height="20" Click="RegisterButton_Click" />
+                <Button Content="{DynamicResource All}"  Margin="5, 0, 0, 0" FontSize="11" Width="90" Height="20" Click="ShowAll_Click" />
             </StackPanel>
 
             <Button x:Name="MenuToggleButton" Content="&#x2630;" FontSize="20" Background="Transparent"
@@ -47,9 +47,9 @@
                     <StackPanel Background="White" Margin="5" >
                         <Button Click="MenuToggleButton_Click" Content="{DynamicResource UserAccount}"/>
                         <Button Click="RentButton_Click" Content="{DynamicResource RentHouse}"/>
-                        <Button Click="MenuToggleButton_Click" Content="{DynamicResource AddReview}"/>
+                        <Button Click="AddReview_Click" Content="{DynamicResource AddReview}"/>
                         <Button Click="ExitButton_Click" Content="{DynamicResource Exit}"/>
-                        <ComboBox x:Name="availableLanguagesList" HorizontalAlignment="Left" Margin="710,0,0,0" VerticalAlignment="Center" Width="107" SelectedIndex="0" Background="{x:Null}">
+                        <ComboBox x:Name="availableLanguagesList" HorizontalAlignment="Right"  VerticalAlignment="Center"  SelectedIndex="0" Background="{x:Null}">
                             <ComboBoxItem
                             x:Name="Ru"
                             Content="Русский"
@@ -69,7 +69,7 @@
                 <ColumnDefinition Width="741*" />
                 <ColumnDefinition Width="59*" />
             </Grid.ColumnDefinitions>
-            <ListBox  x:Name="AllFilters" BorderBrush="#DEDEDE" BorderThickness="1" ItemsSource="{Binding Source=ItemList}" Background="#63AFD0" Grid.Column="0" Grid.ColumnSpan="2"   >
+            <ListBox  x:Name="AllFilters" SelectionChanged="AllFilters_SelectionChanged" BorderBrush="#DEDEDE" BorderThickness="1" ItemsSource="{Binding Source=ItemList}" Background="#63AFD0" Grid.Column="0" Grid.ColumnSpan="2"   >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="10">

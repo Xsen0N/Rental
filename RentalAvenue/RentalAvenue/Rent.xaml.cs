@@ -54,12 +54,12 @@ namespace RentalAvenue
         }
         private void OnSubmit(object sender, RoutedEventArgs e)
         {
-            // Создаем новый объект жилья и заполняем его данными из формы
-            
-            //Houses houses = new Houses();
-            
-            // Создаем новый объект жилья и заполняем его данными из формы
-            string img = PhotoTextBox.ContentStringFormat;
+
+            try
+            {
+                
+                
+            string img = PhotoTextBox.Content.ToString();
             string type = PropertyTypeComboBox.Text;
             string Address = AddressTextBox.Text;
             int metr = Convert.ToInt32(Metr.Text);
@@ -67,9 +67,6 @@ namespace RentalAvenue
             int Rooms = Convert.ToInt32(RoomsComboBox.Text);
             string Description = DescriptionTextBox.Text;
             Houses houses = db.Houses.FirstOrDefault(pt => pt.PropertyType.Type == PropertyTypeComboBox.Text);
-
-            try
-            {
                 // считываем данные из полей ввода
 
                 // проверяем почту на уникальность
@@ -95,7 +92,7 @@ namespace RentalAvenue
                     Price = Price,
                     Metrage= metr,
                     Rooms = Rooms,
-                    Owner = CurrentSessionUser.User.Login,
+                    Owner = CurrentSessionUser.User.Id.ToString(),
                     Description = Description,
                     PropertyType = types,
                     Img = img
@@ -111,6 +108,7 @@ namespace RentalAvenue
                 _ = MessageBox.Show("Заполнение прошло успешно!", "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 Close();
+            
             }
             catch (Exception ex)
             {

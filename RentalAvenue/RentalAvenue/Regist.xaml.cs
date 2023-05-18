@@ -21,6 +21,7 @@ namespace RentalAvenue
         {
             InitializeComponent();
             Resources.MergedDictionaries.Add(ruDict); // словарь русских слов
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
         }
        

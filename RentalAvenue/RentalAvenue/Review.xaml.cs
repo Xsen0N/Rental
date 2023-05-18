@@ -28,6 +28,8 @@ namespace RentalAvenue
             InitializeComponent();
             Resources.MergedDictionaries.Add(ruDict); // словарь русских слов
 
+            LogTextBox.Text = CurrentSessionUser.User.Login;        
+
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)

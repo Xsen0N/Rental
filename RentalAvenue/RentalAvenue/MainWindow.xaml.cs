@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static RentalAvenue.Entities;
 
 namespace RentalAvenue
 {
@@ -34,6 +35,23 @@ namespace RentalAvenue
             ItemsList.ItemsSource = db.Houses.ToList();
             AllFilters.ItemsSource = db.PropertyType.ToList();
         }
+        private void AllFilters_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Получите выбранный элемент
+            var selectedFilter = AllFilters.SelectedItem as PropertyType;
+
+            if (selectedFilter != null)
+            {
+                // Загрузите данные только выбранного типа
+                var filteredData = db.Houses.Where(house => house.PropertyType == selectedFilter).ToList();
+                ItemsList.ItemsSource = filteredData;
+            }
+            else
+            {
+                // Если ничего не выбрано, отобразите все данные
+                ItemsList.ItemsSource = db.Houses.ToList();
+            }
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -41,15 +59,23 @@ namespace RentalAvenue
         }
         private void OnNavigateToRentalForm(object sender, RoutedEventArgs e)
         {
-            Rent rentalForm = new Rent();
-            rentalForm.Show();
-            Close();
+            Rent rentWindow = new()
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            rentWindow.Show();
         }
-        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        private void SearchField_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Regist registrationForm = new Regist();
-            registrationForm.Show();
-            Close();
+            string searchText = searchField.Text; // Получаем текст из TextBox
+
+            db.Houses.Load();
+            ItemsList.ItemsSource = db.Houses.ToList().Where(house => house.Description.Contains(searchText));
+        }
+        private void ShowAll_Click(object sender, RoutedEventArgs e)
+        {
+            db.Houses.Load();
+            ItemsList.ItemsSource = db.Houses.ToList();
         }
         private void RentButton_Click(object sender, RoutedEventArgs e)
         {
@@ -59,6 +85,11 @@ namespace RentalAvenue
             };
             rentWindow.Show();
             Close();
+        }
+        private void AddReview_Click(object sender, RoutedEventArgs e)
+        {
+            Review rentalForm = new Review();
+            rentalForm.Show();
         }
         private void MenuToggleButton_Click(object sender, RoutedEventArgs e)
         {

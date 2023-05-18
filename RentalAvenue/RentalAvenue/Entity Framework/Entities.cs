@@ -58,11 +58,14 @@ namespace RentalAvenue
             public int? Metrage { get; set; }
             public int? Rooms { get; set; }
             public string? Owner { get; set; }
+
+            public int OwnerId { get; set; }
             public string? Description { get; set; }
             
             public int PropertyTypeId { get; set; }
             public virtual PropertyType PropertyType { get; set; }
             public string? Img { get; set; }
+            public bool IsFavorite { get; set; }
         }
 
         public class PropertyType

@@ -54,5 +54,6 @@
     <v:String x:Key="ToMain">На главную</v:String>
     <v:String x:Key="NewRew">Ваш отзыв</v:String>
     <v:String x:Key="YourReview">Оставьте отзыв о приложении</v:String>
+    <v:String x:Key="All">Смотреть все</v:String>
 
 </ResourceDictionary>

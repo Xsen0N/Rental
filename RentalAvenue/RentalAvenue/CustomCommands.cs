@@ -11,6 +11,7 @@ namespace RentalAvenue
         public static readonly RoutedUICommand AddHouse = new("Добавление недвижимости", "AddHouse", typeof(CustomCommands));
         public static readonly RoutedUICommand AddReview = new("Добавление отзыва", "AddReview", typeof(CustomCommands));
         public static readonly RoutedUICommand Paste = new("Вставка изображения", "Paste", typeof(CustomCommands));
-        public static readonly RoutedUICommand Save = new("Вставка изображения", "Paste", typeof(CustomCommands));
+        public static readonly RoutedUICommand Save = new("Сохранение изображения", "Paste", typeof(CustomCommands));
+        public static readonly RoutedUICommand Сlear = new("Очистка формы", "Сlear", typeof(CustomCommands));
     }
 }
