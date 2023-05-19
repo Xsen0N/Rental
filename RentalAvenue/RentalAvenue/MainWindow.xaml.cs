@@ -97,6 +97,15 @@ namespace RentalAvenue
         {
             popupMenu.IsOpen = !popupMenu.IsOpen;
         }
+        private void ShowLikeed_Click(object sender, RoutedEventArgs e)
+        {
+            RentalAvenue.Users userWindow = new()
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            userWindow.Show();
+            Close();
+        }
         #region Функции смены языка
 
         private void Ru_Selected(object sender, RoutedEventArgs e) // смена языка на русский путем добавления-удаления словарей
@@ -121,12 +130,12 @@ namespace RentalAvenue
             rentalForm.Show();
         }
 
-        private void searchField_TextChanged_1(object sender, TextChangedEventArgs e)
+        private void SearchField(object sender, TextChangedEventArgs e)
         {
             string searchText = searchField.Text; // Получаем текст из TextBox
 
             db.Houses.Load();
-            ItemsList.ItemsSource = db.Houses.ToList().Where(house => house.Address.Contains(searchText));
+            ItemsList.ItemsSource = db.Houses.ToList().Where(house => house.Address.Contains(searchText) || house.Metrage.ToString().Contains(searchText) || house.Owner.Login.Contains(searchText) || house.Price.ToString().Contains(searchText) || house.PropertyType.Type.Contains(searchText));
 
         }
 

@@ -75,7 +75,10 @@ namespace RentalAvenue
                         throw new Exception("Неправильный формат почты");
                     }
 
-
+                    if (db.Users.Any(u => u.Email == AdminEmail && u.Login != name))
+                    {
+                        throw new Exception("Логин не соответсвует, проверьте логин или введите другую электронную почту");
+                    }
                     // создаем новый объект User
                     User newUser = new()
                     {

@@ -2,8 +2,10 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -61,17 +63,31 @@ namespace RentalAvenue
             };
             mainWindow.Show();
         }
+        private void MainButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new()
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            mainWindow.Show();
+        }
+        #region Функции смены языка
+
+        private void Ru_Selected(object sender, RoutedEventArgs e) // смена языка на русский путем добавления-удаления словарей
+        {
+            Resources.MergedDictionaries.Remove(enDict);
+            Resources.MergedDictionaries.Add(ruDict);
+        }
+        private void Eng_Selected(object sender, RoutedEventArgs e) // смена языка на английский путем добавления-удаления словарей
+        {
+            Resources.MergedDictionaries.Remove(ruDict);
+            Resources.MergedDictionaries.Add(enDict);
+        }
+        #endregion
 
         // Обработчик нажатия на кнопку "Вперед"
-        private void OnNextClick(object sender, RoutedEventArgs e)
-        {
-            // Переходим к следующему отзыву
-            if (_currentIndex < _reviews.Count - 1)
-            {
-                _currentIndex++;
-               // ShowCurrentReview();
-            }
-        }
+
+
         private void DatabaseSelectionChanged(object sender, SelectionChangedEventArgs e) // закидывает выделенный товар в поля формы для изменения
         {
             if (Database.SelectedItem != null)
@@ -81,12 +97,126 @@ namespace RentalAvenue
                 newItemID.Text = selectedModel.Id.ToString();
                 newItemProperty.Text = selectedModel.PropertyType.Type;
                 newItemAddres.Text = selectedModel.Address;
+                newItemMetr.Text = selectedModel.Metrage.ToString();
                 newItemRoom.Text = selectedModel.Rooms.ToString();
                 newItemDesc.Text = selectedModel.Description;
                 newItemPrice.Text = selectedModel.Price.ToString();
                 AddImageButton.Content = selectedModel.Img;
 
             }
+        }
+        private void DatabaseUsersSelectionChanged(object sender, SelectionChangedEventArgs e) // закидывает выделенный товар в поля формы для изменения
+        {
+            if (Database1.SelectedItem != null)
+            {
+                User selectedModel = (User)Database1.SelectedItem;
+                newItemIDUser.Text = selectedModel.Id.ToString();
+                newItemLogin.Text = selectedModel.Login;
+                newItemEmail.Text = selectedModel.Email;
+
+            }
+        }
+        private void AddNewUser(object sender, SelectionChangedEventArgs e) // закидывает выделенный товар в поля формы для изменения
+        {
+            try
+            {
+                User user = CurrentSessionUser.User;
+                string name = newItemLogin.Text;
+                string email = newItemEmail.Text;
+                if (db.Users.Any(u => u.Email == email && u.Login != name))
+                {
+                    throw new Exception("Пользователь с такой почтой уже существует, но логин другой");
+                }
+                string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+
+                if (!Regex.IsMatch(email, emailPattern))
+                {
+                    throw new Exception("Неправильный формат почты");
+                }
+                User newUser = new()
+                {
+                    Login = name,
+                    Email = email,
+                    IsAdmin = false
+                };
+                
+                _ = db.Users.Add(newUser);
+                _ = db.SaveChanges();
+                db.Houses.Load();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка заполнения");
+            }
+
+        }
+        private void SearchField(object sender, TextChangedEventArgs e)
+        {
+            string searchText = searchField.Text; // Получаем текст из TextBox
+
+            db.Houses.Load();
+            ItemsList.ItemsSource = db.Houses.ToList().Where(house => house.Address.Contains(searchText) || house.Owner.Login.Contains(searchText) || house.Price.ToString().Contains(searchText) || house.PropertyType.Type.Contains(searchText) || house.Metrage.ToString().Contains(searchText) || house.Description.Contains(searchText));
+        }
+        private void AddNewHouse(object sender, SelectionChangedEventArgs e) // закидывает выделенный товар в поля формы для изменения
+        {
+                try
+                {
+                User owner = CurrentSessionUser.User;
+                int OId = CurrentSessionUser.User.Id;
+                string img = AddImageButton.Content.ToString();
+                string type = newItemProperty.Text;
+                string Description = newItemDesc.Text;
+                string Address = newItemAddres.Text;
+                int metr = Convert.ToInt32(newItemMetr.Text);
+                int Price = Convert.ToInt32(newItemPrice.Text);
+                int Rooms = Convert.ToInt32(newItemRoom.Text);
+                PropertyType propertyType = db.PropertyType.FirstOrDefault(pt => pt.Type == type);
+
+                Houses newhouse = new()
+                {
+                    Address = Address,
+                    Price = Price,
+                    Metrage = metr,
+                    Rooms = Rooms,
+                    Owner = owner,
+                    OwnerId = OId,
+                    Description = Description,
+                    PropertyType = propertyType, // Используем существующий объект propertyType
+                    Img = img,
+                    IsFavorite = false
+                };
+                User currentUser = db.Users.FirstOrDefault(u => u.Id == CurrentSessionUser.User.Id);
+                if (currentUser != null)
+                {
+                    newhouse.Owner = owner;
+                    newhouse.OwnerId = OId;
+                }
+                _ = db.Houses.Add(newhouse);
+                _ = db.SaveChanges();
+                db.Houses.Load();
+
+            }
+                catch (Exception ) { 
+                MessageBox.Show("Ошибка заполнения");
+                }
+            
+        }
+        private void DeletebyId(object sender, RoutedEventArgs e) // функция загрузки изображения
+        {
+            try
+            {
+                int id = Convert.ToInt32(deletedItemIdInput.Text);
+                Houses newhouse = db.Houses.FirstOrDefault(u => u.Id == id);
+                if (db.Houses.Any(u => u.Id == id))
+                {
+                    _ = db.Houses.Remove(newhouse);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Вы ввели не Id");
+            }
+
         }
         private void LoadImageFile(object sender, RoutedEventArgs e) // функция загрузки изображения
         {

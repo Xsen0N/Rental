@@ -9,6 +9,12 @@
     <Window.Background>
         <ImageBrush ImageSource="img\fon.jpg" Viewbox="0,0,0.5,1" Opacity="0.8"   />
     </Window.Background>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:CustomCommands.Exit}" Executed="ExitButton_Click"/>
+        <CommandBinding Command="{x:Static local:CustomCommands.ToRentPage}" Executed="RentButton_Click"/>
+        <CommandBinding Command="{x:Static local:CustomCommands.ToMain}" Executed="MainButton_Click"/>
+        <CommandBinding Command="{x:Static local:CustomCommands.AddReview}" Executed="AddReview_Click"/>
+    </Window.CommandBindings>
     <Grid x:Name="UserPage">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -40,13 +46,23 @@
             <Button x:Name="MenuToggleButton" Content="&#x2630;" FontSize="20" Background="Transparent"
               BorderBrush="Transparent" Grid.Column="4" Margin="6,7,9,11" Click="MenuToggleButton_Click"/>
             <Popup x:Name="popupMenu" PlacementTarget="{Binding ElementName=MenuToggleButton}" 
-                  Placement="Bottom" StaysOpen="False">
+                  Placement="Bottom" StaysOpen="False" Grid.ColumnSpan="2" Margin="0,0,51,0">
                 <Border Background="White" BorderThickness="0" BorderBrush="Beige">
                     <StackPanel Background="White" Margin="5" >
-                        <Button Click="MenuToggleButton_Click" Content="Личный кабинет"/>
-                        <Button Click="RegisterButton_Click" Content="Опубликовать предложение"/>
-                        <Button Click="MenuToggleButton_Click" Content="Оставить отзыв о приложении"/>
-                        <Button Click="ExitButton_Click" Content="Выход"/>
+                        <Button  Content="{DynamicResource ToMain}" Command="local:CustomCommands.ToMain"/>
+                        <Button  Content="{DynamicResource RentHouse}" Command="local:CustomCommands.ToRentPage"/>
+                        <Button  Content="{DynamicResource AddReview}" Command="local:CustomCommands.AddReview"/>
+                        <Button  Content="{DynamicResource Exit}" Command="local:CustomCommands.Exit"/>
+                        <ComboBox x:Name="availableLanguagesList" HorizontalAlignment="Right"  VerticalAlignment="Center"  SelectedIndex="0" Background="{x:Null}">
+                            <ComboBoxItem
+                            x:Name="Ru"
+                            Content="Русский"
+                            Selected="Ru_Selected"/>
+                            <ComboBoxItem
+                            x:Name="Eng"
+                            Selected="Eng_Selected"
+                            Content="English"/>
+                        </ComboBox>
                     </StackPanel>
                 </Border>
             </Popup>

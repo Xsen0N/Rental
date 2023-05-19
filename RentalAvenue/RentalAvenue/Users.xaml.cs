@@ -67,5 +67,27 @@ namespace RentalAvenue
             Rent rentalForm = new Rent();
             rentalForm.Show();
         }
+        private void AddReview_Click(object sender, RoutedEventArgs e)
+        {
+            Review rentalForm = new Review();
+            rentalForm.Show();
+        }
+        private void RentButton_Click(object sender, RoutedEventArgs e)
+        {
+            Rent rentWindow = new()
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            rentWindow.Show();
+            Close();
+        }
+        private void MainButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new()
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            mainWindow.Show();
+        }
     }
 }

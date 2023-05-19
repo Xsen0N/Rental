@@ -20,7 +20,7 @@
     <v:String x:Key="PriceLabel">Price</v:String>
     <v:String x:Key="AddresLabel">Addres</v:String>
     <v:String x:Key="BedsLabel">Number of bedrooms</v:String>
-    <v:String x:Key="MetrLabel">Meterage</v:String>
+    <v:String x:Key="MetrLabel">Metrage</v:String>
     <v:String x:Key="ImagePathLabel">Path to image</v:String>
     <v:String x:Key="DescLabel">Description</v:String>
 
