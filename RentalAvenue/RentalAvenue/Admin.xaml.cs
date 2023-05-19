@@ -40,6 +40,7 @@ namespace RentalAvenue
             db.Users.Load();
             Database.ItemsSource = db.Houses.ToList();
             Database1.ItemsSource= db.Users.ToList();
+            ItemsList.ItemsSource = db.Review.ToList();
             //ReviewsContainer.ItemsSource = db.Review.ToList();
 
         }

@@ -235,21 +235,41 @@
                     <TextBlock Text="{DynamicResource Review}"
                    FontSize="24"
                    FontWeight="Bold"
-                   Margin="10"/>
+                   Margin="10"
+                               Grid.Row="0"/>
 
                     <!-- Контейнер для отзывов -->
-                    <StackPanel Grid.Row="1" 
-                    Orientation="Horizontal">
+                    <ListBox x:Name="ItemsList"  Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=6}"  RenderTransformOrigin="0.5,0.5"  >
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="796" Height="Auto"  />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
 
-                        <!-- Контейнер для отзывов -->
-                        <Border x:Name="Review" BorderBrush="Gray" BorderThickness="1"  Margin="10" Padding="10" Width="109" Height="103" VerticalAlignment="Top">
-                            <StackPanel>
-                                <TextBlock Text="{Binding UserName}" FontWeight="Bold" FontSize="16" Margin="0,0,0,5" />
-                                <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" />
-                            </StackPanel>
-                        </Border>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
 
-                    </StackPanel>
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" Background="Aqua" >
+                                    <Grid Height="43" Width="92">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding User.Login, StringFormat=- \{0\} : }" HorizontalAlignment="Left" Width="85" Grid.Column="0"  Grid.Row="0"  />
+                                         <TextBlock Text="{Binding Comment}" HorizontalAlignment="Left"  Grid.Column="0"  Grid.Row="1"  Grid.RowSpan="2"/>
+
+                                    </Grid>
+                                </StackPanel>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
             </TabItem>
         </TabControl>
