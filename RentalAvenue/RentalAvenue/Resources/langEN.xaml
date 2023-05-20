@@ -52,4 +52,9 @@
     <v:String x:Key="Review">Reviews and recommendations from our users</v:String>
 
     <v:String x:Key="AddReview">Leave a review of the app</v:String>
+    <v:String x:Key="ToMain">Home</v:String>
+    <v:String x:Key="NewRew">Your review</v:String>
+    <v:String x:Key="YourReview">Leave a review of the app</v:String>
+    <v:String x:Key="All">View All</v:String>
+    <v:String x:Key="More">Detail</v:String>
 </ResourceDictionary>

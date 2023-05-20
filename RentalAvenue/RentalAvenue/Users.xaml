@@ -14,6 +14,8 @@
         <CommandBinding Command="{x:Static local:CustomCommands.ToRentPage}" Executed="RentButton_Click"/>
         <CommandBinding Command="{x:Static local:CustomCommands.ToMain}" Executed="MainButton_Click"/>
         <CommandBinding Command="{x:Static local:CustomCommands.AddReview}" Executed="AddReview_Click"/>
+        <CommandBinding Command="{x:Static local:CustomCommands.ShowNewHouse}" Executed="RedirectToHouseWindow"/>
+        <CommandBinding Command="{x:Static local:CustomCommands.AddToFavorite}" Executed="RedirectToFavoriteWindow"/>
     </Window.CommandBindings>
     <Grid x:Name="UserPage">
         <Grid.RowDefinitions>
@@ -35,11 +37,8 @@
             </Grid.RowDefinitions>
 
             <Image Source="img/logo.png"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="60" Width="70" Margin="10, 0, 0, 0"/>
-
-            <Label Content="{DynamicResource SeachLabel}" Grid.Column="1" Margin="172,16,0,18" HorizontalAlignment="Left" FontSize="11" Width="91" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="searchField" Grid.Column="2" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="177" Height="22"   TextAlignment="Left"  Margin="38,0,0,0"  />
             <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="331,8,10,8" HorizontalAlignment="Right" >
-                <Button Click="OnNavigateToRentalForm" Content="{DynamicResource RentLabel}"  FontSize="11" Height="21" Width="90"   />
+                <Button Click="OnNavigateToRentalForm" Content="{DynamicResource RentLabel}" Background="Wheat"  FontSize="11" Height="21" Width="90"   />
                 <Button Content="{DynamicResource Register}"  Margin="5, 0, 0, 0" FontSize="11" Width="90" Height="20" Click="RegisterButton_Click" />
             </StackPanel>
 
@@ -80,7 +79,7 @@
                     <ColumnDefinition Width="146*"/>
                     <ColumnDefinition Width="146*"/>
                 </Grid.ColumnDefinitions>
-                <ListBox x:Name="ItemsList"  Grid.ColumnSpan="4" Grid.RowSpan="3" d:ItemsSource="{d:SampleData ItemCount=6}" Margin="0,0,2,-126" RenderTransformOrigin="0.5,0.5" >
+                <ListBox x:Name="ItemsList"  Grid.ColumnSpan="4" Grid.RowSpan="3" d:ItemsSource="{d:SampleData ItemCount=6}" Margin="0,0,2,-148" RenderTransformOrigin="0.5,0.5" >
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Width="796" Height="Auto"  />
@@ -105,12 +104,37 @@
                                         <ColumnDefinition />
 
                                     </Grid.ColumnDefinitions>
-                                    <Image Source="{Binding ImagePath}" Grid.ColumnSpan="2" Grid.Row="0" Width="200" Height="200"/>
-                                    <Button Content="Like" Margin="0,5,5,0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" Height="20" Width="25"/>
-                                    <TextBlock Text="{Binding city}" HorizontalAlignment="Left" Width="85" Grid.Column="0"  Grid.Row="1"  Grid.RowSpan="2"/>
-                                    <TextBlock Text="{Binding country, StringFormat= \, \{0\} }" HorizontalAlignment="Left" Width="85"  Grid.Row="1" Grid.Column="1" />
-                                    <TextBlock Text="{Binding metrage, StringFormat=• \{0\} }" Width="85" HorizontalAlignment="Left" Grid.Row="2"  Grid.Column="0" />
-                                    <TextBlock Text="{Binding cost, StringFormat=$ \{0\}}" Width="85" HorizontalAlignment="Left" Grid.Row="3" Grid.RowSpan="2" />
+                                    
+                                        
+
+                                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" >
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition/>
+                                                        <RowDefinition/>
+                                                        <RowDefinition/>
+                                                        <RowDefinition/>
+                                                        <RowDefinition/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition />
+
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="{Binding Img}" Grid.ColumnSpan="2" Grid.Row="0" Width="200" Height="200"/>
+                                                    <Button Content="Like" Margin="0,5,5,0"  HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" Height="20" Width="25" Command="local:CustomCommands.AddToFavorite" CommandParameter="{Binding}" />
+                                                    <TextBlock Text="{Binding Address}" HorizontalAlignment="Left" Width="85" Grid.Column="0"  Grid.Row="1"  Grid.RowSpan="2"/>
+                                                    <TextBlock Text="{Binding PropertyType.Type}" HorizontalAlignment="Left" Width="85" Grid.Column="0"  Grid.Row="3"  Grid.RowSpan="2"/>
+                                                    <TextBlock Text="{Binding Owner.Login, StringFormat= \, \{0\} }" HorizontalAlignment="Left" Width="85"  Grid.Row="1" Grid.Column="1" />
+                                                    <TextBlock Text="{Binding Metrage, StringFormat=• \{0\} }" Width="85" HorizontalAlignment="Left" Grid.Row="2"  Grid.Column="0" />
+                                                    <TextBlock Text="{Binding Rooms, StringFormat=• \{0\}  }" Width="85" HorizontalAlignment="Left" Grid.Row="2"  Grid.Column="1" />
+                                                    <Button Grid.Row="0" VerticalAlignment="Top" CommandParameter="{Binding}" Command="local:CustomCommands.ShowNewHouse" Grid.Column="0"  Content="{DynamicResource More}"  Height="30" Width="68" />
+                                                </Grid>
+                                            </StackPanel>
+
+                                        
+                                   
                                 </Grid>
                             </StackPanel>
 

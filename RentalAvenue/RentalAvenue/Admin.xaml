@@ -11,10 +11,16 @@
         <CommandBinding Command="{x:Static local:CustomCommands.ToMain}" Executed="MainButton_Click"/>
         <CommandBinding Command="{x:Static local:CustomCommands.Exit}" Executed="ExitButton_Click"/>
         <CommandBinding Command="{x:Static local:CustomCommands.ClearPage}" Executed="ClearForm"/>
-        <CommandBinding Command="{x:Static local:CustomCommands.AddHouse}" Executed="ExitButton_Click"/>
-        
+        <CommandBinding Command="{x:Static local:CustomCommands.AddHouse}" Executed="AddNewHouse"/>
+        <CommandBinding Command="{x:Static local:CustomCommands.AddUser}" Executed="AddNewUser"/>
+        <CommandBinding Command="{x:Static local:CustomCommands.DeleteUser}" Executed="DeletebyIdUser"/>
+        <CommandBinding Command="{x:Static local:CustomCommands.DeleteHouse}" Executed="DeletebyId"/>
+
 
     </Window.CommandBindings>
+    <Window.Background>
+        <ImageBrush ImageSource="img\fon.jpg" Viewbox="0,0,0.5,1" Opacity="0.8"   />
+    </Window.Background>
     <Grid x:Name="AdminPage">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -40,7 +46,7 @@
             <Label Content="{DynamicResource SeachLabel}" Grid.Column="1" Margin="190,16,0,18" HorizontalAlignment="Left" FontSize="11" Width="60" Grid.ColumnSpan="2"/>
             <TextBox x:Name="searchField" Grid.Column="1" TextChanged="SearchField" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="215" Height="22"   TextAlignment="Left"  Margin="309,0,0,0" Grid.ColumnSpan="2" />
             <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="331,8,10,8" HorizontalAlignment="Right" >
-                <Button Content="{DynamicResource ToMain}"  Margin="5, 0, 0, 0" FontSize="11" Width="90" Height="20" Click="MainButton_Click" />
+                <Button Content="{DynamicResource ToMain}"  Background="Wheat" Margin="5, 0, 0, 0" FontSize="11" Width="90" Height="20" Click="MainButton_Click" />
             </StackPanel>
 
             <Button x:Name="MenuToggleButton" Content="&#x2630;" FontSize="20" Background="Transparent"
@@ -165,7 +171,7 @@
                         Rows="8"
                         Style="{DynamicResource UniformGridStyle}">
                         <Label x:Name="IDLabel" Content="{DynamicResource Id}" VerticalAlignment="Top"/>
-                        <TextBox x:Name="newItemID"  TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}" />
+                        <TextBox x:Name="newItemID" IsEnabled="True" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}" />
                         <Label x:Name="PropertyLabel" Content="{DynamicResource PropertyLabel}" VerticalAlignment="Top"/>
                         <TextBox x:Name="newItemProperty" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch"></TextBox>
                         <Label x:Name="AddresLabel" Content="{DynamicResource AddresLabel}" VerticalAlignment="Top"/>
@@ -184,7 +190,7 @@
                         <Button x:Name="ClearFormButton" Command="local:CustomCommands.ClearPage" Content="{DynamicResource ClearFormButton}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left"  Style="{DynamicResource ButtonStyle}" Height="22" Width="106" Margin="13,0,0,0"/>
                     </UniformGrid>
                     <UniformGrid  Grid.Column="5" Style="{DynamicResource UniformGridStyle}" Grid.Row="1" Margin="13,13,14,1" Grid.ColumnSpan="2">
-                        <Button x:Name="DeleteItemButton" Command="ApplicationCommands.Delete" Content="{DynamicResource DeleteItemButton}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch"  HorizontalAlignment="Left" Height="18" Width="97" Margin="0,-1,0,0"/>
+                        <Button x:Name="DeleteItemButton" Command="local:CustomCommands.DeleteHouse" Content="{DynamicResource DeleteItemButton}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch"  HorizontalAlignment="Left" Height="18" Width="97" Margin="0,-1,0,0"/>
                         <TextBox x:Name="deletedItemIdInput" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}" Margin="21,0,0,0" Height="17"/>
                     </UniformGrid>
                 </Grid>
@@ -236,12 +242,12 @@
                         <TextBox x:Name="newItemLogin" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}"/>
                         <Label x:Name="Email" Content="{DynamicResource Email}" VerticalAlignment="Top"/>
                         <TextBox x:Name="newItemEmail" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch"/>
-                        <Button x:Name="AddItemButton1" Content="{DynamicResource AddItemButton}" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="0,0,0,8" Height="18" Width="62" >
+                        <Button x:Name="AddItemButton1" Command="local:CustomCommands.AddUser" Content="{DynamicResource AddItemButton}" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="0,0,0,8" Height="18" Width="62" >
                         </Button>
                         <Button x:Name="ClearFormButton1" Command="local:CustomCommands.ClearPage" Content="{DynamicResource ClearFormButton}" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" HorizontalAlignment="Right"  Style="{DynamicResource ButtonStyle}" Height="21" Width="96" Margin="0,-27,0,0"/>
                     </UniformGrid>
                     <UniformGrid Grid.Column="5" Style="{DynamicResource UniformGridStyle}" Margin="0,377,0,0" Grid.RowSpan="2">
-                        <Button x:Name="DeleteItemButton2" Command="ApplicationCommands.Delete" Content="{DynamicResource DeleteItemButton}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Height="18" Width="93"/>
+                        <Button x:Name="DeleteItemButton2" Command="local:CustomCommands.DeleteUser" Content="{DynamicResource DeleteItemButton}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Height="18" Width="93"/>
                         <TextBox x:Name="deletedItemIdInput2" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" Style="{DynamicResource TextBoxStyle}" Margin="28,0,0,0"/>
                     </UniformGrid>
                 </Grid>

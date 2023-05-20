@@ -86,7 +86,7 @@ namespace RentalAvenue
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
             rentWindow.Show();
-            Close();
+           
         }
         private void AddReview_Click(object sender, RoutedEventArgs e)
         {
@@ -96,6 +96,45 @@ namespace RentalAvenue
         private void MenuToggleButton_Click(object sender, RoutedEventArgs e)
         {
             popupMenu.IsOpen = !popupMenu.IsOpen;
+        }
+        private void RedirectToHouseWindow(object sender, ExecutedRoutedEventArgs e)
+        {
+            var houses = e.Parameter as RentalAvenue.Entities.Houses;
+            if (houses != null)
+            {
+                House housePage = new(houses)
+                {
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
+                housePage.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Произошла ошибка открытия окна! Попробуйте еще раз.");
+            }
+        }
+        private void RedirectToFavoriteWindow(object sender, ExecutedRoutedEventArgs e)
+        {
+            var houses = e.Parameter as RentalAvenue.Entities.Houses;
+            if (houses != null)
+            {
+                if (houses.IsFavorite == false)
+                {
+
+
+                    MessageBox.Show("Элемент добавлен");
+                    houses.IsFavorite = true;
+                }
+                else {
+                    MessageBox.Show("Элемент удален");
+                    houses.IsFavorite = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Произошла ошибка! Попробуйте еще раз.");
+            }
         }
         private void ShowLikeed_Click(object sender, RoutedEventArgs e)
         {

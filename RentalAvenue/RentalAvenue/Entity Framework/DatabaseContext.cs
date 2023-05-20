@@ -16,7 +16,7 @@ namespace RentalAvenue
         public DbSet<Entities.Review> Review { get; set; }
         public DbSet<FavoriteHouses> FavoriteHouses { get; set; }
 
-
+        public DbSet<Booking> Booking { get; set; }
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
             _ = Database.EnsureCreated();

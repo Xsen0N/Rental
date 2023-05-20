@@ -25,7 +25,6 @@ namespace RentalAvenue
             public int Id { get; set; }
             public DateTime BookingDate { get; set; }
             public int HouseId { get; set; }
-            public virtual Houses? Houses { get; set; }
             public int UserId { get; set; }
             public virtual User? User { get; set; }       
 

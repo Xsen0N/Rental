@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,13 +20,18 @@ namespace RentalAvenue
     /// </summary>
     public partial class Users : Window
     {
+        internal static DatabaseContext db = DB.connector;
         private readonly ResourceDictionary enDict = new ResourceDictionary() { Source = new Uri("Resources/langEN.xaml", UriKind.Relative) };
         private readonly ResourceDictionary ruDict = new ResourceDictionary() { Source = new Uri("Resources/langRU.xaml", UriKind.Relative) };
+        private readonly RentalAvenue.Entities.FavoriteHouses currenthouse;
         public Users()
         {
             InitializeComponent();
             Resources.MergedDictionaries.Add(ruDict); // словарь русских слов
+            db.Houses.Load();
+            ItemsList.ItemsSource = db.Houses.ToList().Where(house => house.IsFavorite == true);
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -64,13 +70,20 @@ namespace RentalAvenue
         }
         private void OnNavigateToAdmin(object sender, RoutedEventArgs e)
         {
-            Rent rentalForm = new Rent();
-            rentalForm.Show();
+            Rent rentWindow = new()
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            rentWindow.Show();
+            
         }
         private void AddReview_Click(object sender, RoutedEventArgs e)
         {
-            Review rentalForm = new Review();
-            rentalForm.Show();
+            Review rentWindow = new()
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            rentWindow.Show();
         }
         private void RentButton_Click(object sender, RoutedEventArgs e)
         {
@@ -81,6 +94,29 @@ namespace RentalAvenue
             rentWindow.Show();
             Close();
         }
+        private void RedirectToFavoriteWindow(object sender, ExecutedRoutedEventArgs e)
+        {
+            var houses = e.Parameter as RentalAvenue.Entities.Houses;
+            if (houses != null)
+            {
+                if (houses.IsFavorite == false)
+                {
+
+
+                    MessageBox.Show("Элемент добавлен");
+                    houses.IsFavorite = true;
+                }
+                else
+                {
+                    MessageBox.Show("Элемент удален");
+                    houses.IsFavorite = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Произошла ошибка! Попробуйте еще раз.");
+            }
+        }
         private void MainButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new()
@@ -88,6 +124,24 @@ namespace RentalAvenue
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
             mainWindow.Show();
+            Close();
+        }
+        private void RedirectToHouseWindow(object sender, ExecutedRoutedEventArgs e)
+        {
+            var houses = e.Parameter as RentalAvenue.Entities.Houses;
+            if (houses != null)
+            {
+                House housePage = new(houses)
+                {
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
+                housePage.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Произошла ошибка ! Попробуйте еще раз.");
+            }
         }
     }
 }

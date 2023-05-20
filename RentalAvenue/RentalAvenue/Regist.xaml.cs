@@ -66,6 +66,10 @@ namespace RentalAvenue
                     {
                         throw new Exception("Пользователь с такой почтой уже существует, но логин другой");
                     }
+                    if (name ==null )
+                    {
+                        throw new Exception("Введите логин!");
+                    }
 
                     // проверяем правильность ввода почты и телефона с помощью regex
                     string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
@@ -75,10 +79,10 @@ namespace RentalAvenue
                         throw new Exception("Неправильный формат почты");
                     }
 
-                    if (db.Users.Any(u => u.Email == AdminEmail && u.Login != name))
-                    {
-                        throw new Exception("Логин не соответсвует, проверьте логин или введите другую электронную почту");
-                    }
+                    //if (db.Users.Any(u => u.Email == AdminEmail && u.Login != name))
+                    //{
+                    //    throw new Exception("Логин не соответсвует, проверьте логин или введите другую электронную почту");
+                    //}
                     // создаем новый объект User
                     User newUser = new()
                     {
@@ -94,8 +98,12 @@ namespace RentalAvenue
 
                     // выводим сообщение об успешной регистрации
                     _ = MessageBox.Show("Регистрация прошла успешно!", "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
-                    //Regist = new();
-                    //loginPage.Show();
+        
+                    MainWindow mainWindow = new()
+                    {
+                        WindowStartupLocation = WindowStartupLocation.CenterScreen
+                    };
+                    mainWindow.Show();
                     Close();
                 }
                 catch (Exception ex)

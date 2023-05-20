@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
@@ -116,7 +117,7 @@ namespace RentalAvenue
 
             }
         }
-        private void AddNewUser(object sender, SelectionChangedEventArgs e) // закидывает выделенный товар в поля формы для изменения
+        private void AddNewUser(object sender, RoutedEventArgs e) // закидывает выделенный товар в поля формы для изменения
         {
             try
             {
@@ -142,7 +143,9 @@ namespace RentalAvenue
                 
                 _ = db.Users.Add(newUser);
                 _ = db.SaveChanges();
-                db.Houses.Load();
+                MessageBox.Show("Добавлено!");
+
+                db.Users.Load();
             }
             catch (Exception)
             {
@@ -157,7 +160,7 @@ namespace RentalAvenue
             db.Houses.Load();
             ItemsList.ItemsSource = db.Houses.ToList().Where(house => house.Address.Contains(searchText) || house.Owner.Login.Contains(searchText) || house.Price.ToString().Contains(searchText) || house.PropertyType.Type.Contains(searchText) || house.Metrage.ToString().Contains(searchText) || house.Description.Contains(searchText));
         }
-        private void AddNewHouse(object sender, SelectionChangedEventArgs e) // закидывает выделенный товар в поля формы для изменения
+        private void AddNewHouse(object sender, RoutedEventArgs e) // закидывает выделенный товар в поля формы для изменения
         {
                 try
                 {
@@ -171,7 +174,7 @@ namespace RentalAvenue
                 int Price = Convert.ToInt32(newItemPrice.Text);
                 int Rooms = Convert.ToInt32(newItemRoom.Text);
                 PropertyType propertyType = db.PropertyType.FirstOrDefault(pt => pt.Type == type);
-
+                
                 Houses newhouse = new()
                 {
                     Address = Address,
@@ -193,6 +196,13 @@ namespace RentalAvenue
                 }
                 _ = db.Houses.Add(newhouse);
                 _ = db.SaveChanges();
+                MessageBox.Show("Добавлено!");
+                newItemID.Clear();
+                newItemProperty.Clear();
+                newItemAddres.Clear();
+                newItemRoom.Clear();
+                newItemPrice.Clear();
+                newItemDesc.Clear();
                 db.Houses.Load();
 
             }
@@ -210,6 +220,28 @@ namespace RentalAvenue
                 if (db.Houses.Any(u => u.Id == id))
                 {
                     _ = db.Houses.Remove(newhouse);
+                    _ = db.SaveChanges();
+                    MessageBox.Show("Удалено!");
+                }
+                deletedItemIdInput.Clear();
+                db.Houses.Load();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Вы ввели не Id");
+            }
+
+        }
+        private void DeletebyIdUser(object sender, RoutedEventArgs e) // функция загрузки изображения
+        {
+            try
+            {
+                int id = Convert.ToInt32(deletedItemIdInput2.Text);
+                User newuser = db.Users.FirstOrDefault(u => u.Id == id);
+                if (db.Houses.Any(u => u.Id == id))
+                {
+                    _ = db.Users.Remove(newuser);
+                    _ = db.SaveChanges();
                 }
             }
             catch (Exception)

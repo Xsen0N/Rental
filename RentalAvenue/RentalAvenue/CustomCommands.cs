@@ -16,7 +16,9 @@ namespace RentalAvenue
         public static readonly RoutedUICommand Exit = new("Выход", "ToMain", typeof(CustomCommands));
         public static readonly RoutedUICommand ToRentPage = new("Переход на страницу сдачи жилья", "ToMain", typeof(CustomCommands));
         public static readonly RoutedUICommand AddUser = new("Добавление пользователя", "AddUser", typeof(CustomCommands));
-
-
+        public static readonly RoutedUICommand DeleteUser = new("Удаление пользователя", "DeleteUser", typeof(CustomCommands));
+        public static readonly RoutedUICommand DeleteHouse = new("Удаление дома", "DeleteHouse", typeof(CustomCommands));
+        public static readonly RoutedUICommand ShowNewHouse = new("Отображение отдельной страницы", "ShowNewHouse", typeof(CustomCommands));
+        public static readonly RoutedUICommand AddToFavorite = new("Добавление в понравившиеся", "AddToFavorite", typeof(CustomCommands));
     }
 }
